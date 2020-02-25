@@ -24,13 +24,13 @@ WAPS 10 to prevent:
 1: Injection
   - We are using hibernate and if you properly use your HQL queries to
   take input as Strings in the configuration page, SQLi cannot be accomplished.
-  This is equivalent to prepared statements.
+  This is equivalent to prepared statements in the HQL world.
   
 2: Broken Auth
   - 2 Factor Authentication.
   
 3: Sensitive Data Exposure
-  - Encrypt the data at rest. However, most of the data at rest isn't PII or
+  - Encrypt the data at rest. However, most of the data needed for students at rest isn't PII or
   highly senstitive at all. But will still encrypt at rest data.
   
 4: XML Externals
@@ -56,7 +56,8 @@ WAPS 10 to prevent:
   
 9: Using Components with unsecure
   - Use up to date security features. For example, we are using bcrypt and not
-  most definitely not MD5
+  most definitely not MD5. We are also not using (unless absolutely necessary) any deprecated
+  functions, APIs, or frameworks. 
   
 10: Insufficient loggin/monitoring
   - Will be logging all data manipulation from the admins.
