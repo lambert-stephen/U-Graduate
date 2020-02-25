@@ -96,7 +96,7 @@ class UGraduateApplicationTests {
 		assertTrue(className,search database for a true value);
 	}
 
-	Using the JUnit Testing Framework
+	//Using the JUnit Testing Framework
 
 	/*Student*/
 
@@ -106,6 +106,7 @@ class UGraduateApplicationTests {
 	public void registerTest(){
 		assertSame(registered student object, seach database for student name, id);
 	}
+
 
 	#Search class
 	//when a class is searched, the classes should all appear in the database
