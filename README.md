@@ -33,6 +33,8 @@ We should at least have the following amount of toy data
 20 classes with class names, times and seat information
 2 admins
 
+***Test Case Location: final-project-we-push-to-master\src\test\java\com\web_dev_494\uGraduate***
+
 The functionalities listed above under Students will be what our tests are checking for. Basic CRUD tests should be written for the students' class.
 
 Fabian - mess around with Spring Security and configure things as needed. Still unsure of how to fully use Spring security but will have more detailed Spring security actions by checkpoint 4. Work on IAM configurations and learn how to do that. Will try to get those configurations up and running.
