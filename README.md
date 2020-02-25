@@ -1,7 +1,6 @@
-# {{TEAMNAME}} Final Project
+# We Push To Master Final Project
 
 TODO: Fill out this file with the following information
-
 
 ## Description
 
