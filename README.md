@@ -20,7 +20,7 @@ getting it described and added. Your expertise self-evaluation is completely on 
 For instance:
 
 | Member | Web dev level | Specialization |
-| --- | --- | --- |
+| Stephen Lambert | web programming novie | HTML,CSS,Java,JUnit |
 | Ned the Novice | web programming novice | |
 | Isaac the Intermediate | Took IT 202, built something in php once | I want to learn about website performance so I will be adding performance tests and keeping a performance log. |
 | Edith the Expert | Interned as a web dev for the last 2 semesters | I will containerize the app and configure it to run within Kubernetes, integrate it with a CI/CD platform so that the deployed version is updated once all tests pass, and I will run a load test with several synthetic long-session users to demonstrate rolling updates to the code. |
