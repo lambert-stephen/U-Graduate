@@ -17,7 +17,7 @@ updates the DB and GUI accordingly.
  ## Functionalities
  --Functionalities/Classes
  
- A user can register and login as either a student or admin. Students can: 
+ A user can register and login as either a student or admin. Students can: -
 Register
 Search class
 See all the classes until graduation
@@ -25,7 +25,7 @@ Unregister
 See available classes for registration
 No. Seats
 
-Admins can: 
+Admins can: -
 Add students
 Add Classes
 Remove classes, students
