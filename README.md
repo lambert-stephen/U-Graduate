@@ -1,37 +1,41 @@
-# {{TEAMNAME}} Final Project
-
-TODO: Fill out this file with the following information
+# We Push to Master Final Project
 
 
 ## Description
 
-TODO: An English language description of what your application does, intended for a developer
-audience. Pretend this is the real `README.md` for your app that will show up on GitHub: what do you
-want people to know about it? What does it do? Why should they use it/check it out/hack on it? This
-should be approximately two paragraphs. Take a look at the description of your favorite software
-repository for inspiration.
+Overview: uGraduate is going to be an application that centralizes the current
+in place systems students use to register. Students currently use 3 different
+applications/systems to register for a semester. uAchieve, Register XE,
+and uAdvise. All of the systems are not consistent and they are not centered
+around the user experience. uGraduate will allow students to register, drop
+classes, visually see all required courses through graduation in a tree like
+fashion, and see available resources. All access control will be done through
+administrators that have the ability to not only drop/add students to classes,
+but they will indicate whether or not a student passes or fails a class and
+updates the GUI accordingly.
+
 
 ## Authors
 
-TODO: List group members, each group member must EITHER be marked "web programming novice" OR list a
-specialization - you don't need to implement it all yourself, but you do need to be in charge of
-getting it described and added. Your expertise self-evaluation is completely on the honor system.
-
-For instance:
-
 | Member | Web dev level | Specialization |
 | --- | --- | --- |
-| Ned the Novice | web programming novice | |
-| Isaac the Intermediate | Took IT 202, built something in php once | I want to learn about website performance so I will be adding performance tests and keeping a performance log. |
-| Edith the Expert | Interned as a web dev for the last 2 semesters | I will containerize the app and configure it to run within Kubernetes, integrate it with a CI/CD platform so that the deployed version is updated once all tests pass, and I will run a load test with several synthetic long-session users to demonstrate rolling updates to the code. |
+| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | Security. I want to learn how to properly utilize security in a non-trivial way. I will customize the IAM on AWS and use credential-less storing so we are not storing keys on the repo. 2f authentication. Since there is no incredibly obvious security solution for this registration system, I will designate all security aspects of the application as my specialization |
+| Hanna Thayyil | Novice | --- |
+| Jonathan Vega the Intermediate | Took IT202, flew through most content though.. | Front-end. Bootstrap, JQuery, probably React |
+| Stephen Lambert | Novice | --- |
 
 ## Deliverables for checkpoint 2
 
-Outline in English what the deliverables will be for checkpoint 2. Provide a concise list that is
-amenable to being translated into specific tests. Pro-tip: if you write that concise list here, you
-should be able to easily translate it into a collection of test suites.
+Have Hibernate and MySQL set up with a good amount of toy data we can use for querying.
+We should at least have the following amount of toy data
+50 students with all of their credentials
+2 different colleges with 2 majors per college and 10 classes for each major
+20 classes with class names, times and seat information
+2 admins
 
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+The functionalities listed above under Students will be what our tests are checking for. Basic CRUD tests should be written for the students' class.
+
+Fabian - mess around with Spring Security and configure things as needed. Still unsure of how to fully use Spring security but will have more detailed Spring security actions by checkpoint 4. Work on IAM configurations and learn how to do that. Will try to get those configurations up and running.
 
 ## Deliverables for checkpoint 4
 
@@ -51,8 +55,9 @@ For each specialization, you must list specific checkpoints that are relevant to
 
 ## Specialization deliverables
 
-For each student/team adding a specialization, name that specialization and describe what
-functionality you will be adding.
+Fabian - Secure management of the registration system. IAM customization for Admin roles only. String access control. 2F auth for admins. Extensive logging. Credential-less storing, and other related security vulnerabilities within the scope of the registration system
+
+Jon - An interactive Class tree map that displays classes completed, in progress, and finished. Will make a very user experience centered design that focuses on user recognition (rather than recall) and really adhere to the Nielson 10 design heuristics
 
 # Installation
 
