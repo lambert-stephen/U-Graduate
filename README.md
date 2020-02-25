@@ -17,24 +17,28 @@ updates the DB and GUI accordingly.
  ## Functionalities
  --Functionalities/Classes
  
- A user can register and login as either a student or admin. Students can: -
-Register
-Search class
-See all the classes until graduation
-Unregister
-See available classes for registration
-No. Seats
+ A user can register and login as either a student or admin. Students can: 
+ 
+Register,
+Search class,
+See all the classes until graduation,
+Unregister,
+See available classes for registration,
+See completed classes,
+No. Seats availble for classes 
 
-Admins can: -
-Add students
-Add Classes
-Remove classes, students
-Update class completion
-Update classes
-Add other admins
-Remove other admins
+Admins can: 
+
+Add students,
+Add Classes,
+Remove classes and students,
+Update class completion,
+Update class information,
+Add other admins,
+Remove other admins,
 
 These classes are created in our DB for querying 
+
 • Major
 • Students
 • Colleges
