@@ -1,3 +1,4 @@
+/*
 package com.web_dev_494.uGraduate;
 
 import org.junit.jupiter.api.Test;
@@ -98,7 +99,7 @@ class UGraduateApplicationTests {
 
 	//Using the JUnit Testing Framework
 
-	/*Student*/
+
 
 	#Register
 	//when a student registers, their name should appear in the database
@@ -150,7 +151,6 @@ class UGraduateApplicationTests {
 		assertEquals(!0, selected class total number of open seats);
 	}
 
-	/*Admins*/
 
 	#Add students
 	//create or modify a person as a student
@@ -204,7 +204,6 @@ class UGraduateApplicationTests {
 		assertTrue(selected user is not an admin, check the database to see if the user is not an admin);
 	}
 
-	/*Major*/
 
 	#All majors
 	• College
@@ -237,3 +236,4 @@ class UGraduateApplicationTests {
 	}
 	
 }
+*/
