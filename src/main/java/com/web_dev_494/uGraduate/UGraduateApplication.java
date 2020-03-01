@@ -2,6 +2,8 @@ package com.web_dev_494.uGraduate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,11 +15,39 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 @SpringBootApplication
-public class UGraduateApplication {
+public class UGraduateApplication extends SpringBootServletInitializer {
+
+	/*
+	private static void test(){
+		String jdbcUrl = "jdbc:mysql://localhost:3306/student_directory?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+		String username = "dev";
+		String password = "dev";
+		try{
+
+			System.out.println("connecting to database " + jdbcUrl);
+			Connection myConnection = DriverManager.getConnection(jdbcUrl, username, password);
+			System.out.println("Connection successful!!!");
+		}
+		catch (Exception exc){
+			System.out.println("FAILLLLLLLLL*********************************");
+			exc.printStackTrace();
+		}
+	}
+
+	 */
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(UGraduateApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(UGraduateApplication.class, args);
+		//test();
 	}
 
 }
@@ -31,13 +61,13 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 	UserDetailsService authentication(){
 		UserDetails defaultAdmin = User.builder()
 				.username("admin")
-				.password(pwEncoder.encode("12345qwert!@#$%QWERT"))
+				.password(pwEncoder.encode("12345qwert"))
 				.roles("ADMIN", "USER")
 				.build();
 
 		UserDetails defaultTest = User.builder()
 				.username("test")
-				.password(pwEncoder.encode("12345qwert!@#$%QWERT"))
+				.password(pwEncoder.encode("12345qwert"))
 				.roles("USER")
 				.build();
 		return new InMemoryUserDetailsManager(defaultAdmin, defaultTest);

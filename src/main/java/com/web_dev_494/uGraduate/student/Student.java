@@ -1,7 +1,10 @@
 package com.web_dev_494.uGraduate.student;
 
+
 import java.util.HashMap;
 
+//@Entity
+//@Table(name="student")
 public class Student {
 
     private String name;
