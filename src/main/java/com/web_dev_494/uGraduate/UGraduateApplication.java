@@ -1,4 +1,4 @@
-package main.java.com.web_dev_494.uGraduate;
+package com.web_dev_494.uGraduate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
