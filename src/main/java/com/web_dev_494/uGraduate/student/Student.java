@@ -10,7 +10,6 @@ public class Student {
     private HashMap<String, Boolean> registerList;
     private HashMap<String, Boolean> completeList;
 
-   
     public Student(){
         
     }
