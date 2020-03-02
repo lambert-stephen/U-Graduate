@@ -100,5 +100,9 @@ Jon - An interactive Class tree map that displays classes completed, in progress
 
 # Installation
 
-By the time you get to the end of the final project, this section should have a full set of
-instructions for how to spin up your app.
+AWS Deployment Instructions:
+- Intall Intellij or Eclipse
+- Import this project folder as a MAVEN project
+- Run mvn clean package. This will create a directory called target and add folders and files inside. Inside the file, there is a .war file (not the .war.original). This is the file that will be used to deploy on the server
+- On AWS, create a new instance of Elastic Beanstalk and upload the .war file from the project directory
+- Good to go

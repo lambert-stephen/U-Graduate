@@ -5,18 +5,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 public class UserController {
 
-    @GetMapping("/everyone")
+    @RequestMapping("/")
+    public String home(){
+        return "devtest";
+    }
+
+    @RequestMapping("/everyone")
     public String homePage(){
 
         return "Everyone has access";
     }
 
-    @GetMapping("/admin")
+    @RequestMapping("/admin")
     public String adminHome(){
         return "Administrator access only";
     }
+
 
 }
