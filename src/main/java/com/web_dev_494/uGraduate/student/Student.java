@@ -1,14 +1,15 @@
-package com.web_dev_494.uGraduate.student;
+package main.java.com.web_dev_494.uGraduate.student;
 
 import java.util.HashMap;
+
 
 public class Student {
 
     private String name;
     private String major;
     private int studentID;
-    private HashMap<String, Boolean> registerList;
-    private HashMap<String, Boolean> completeList;
+    private HashMap<Class, Boolean> registerList;
+    private HashMap<Class, Boolean> completeList;
 
    
     public Student(){
@@ -23,8 +24,6 @@ public class Student {
 
         registerList = new HashMap<>();
         completeList = new HashMap<>();
-
-
     }
 
     public String getName() {
