@@ -14,6 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -78,5 +79,8 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().mvcMatchers("/admin/**").hasRole("ADMIN")
 				.and().authorizeRequests().anyRequest().authenticated()
 				.and().formLogin().and().httpBasic();
+
+		http.formLogin().defaultSuccessUrl("/advisor/login", true);
 	}
+
 }

@@ -5,23 +5,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RequestMapping("/advisor")
 @Controller
-public class UserController {
+public class AdvisorController {
 
-    @RequestMapping("/")
+    @RequestMapping("/login")
     public String home(){
-        return "devtest";
+        return "admin-homepage";
     }
 
-    @RequestMapping("/everyone")
-    public String homePage(){
+    @RequestMapping("/addStudent")
+    public String addStudent(){
 
-        return "Everyone has access";
+        return "add-student-page";
     }
 
-    @RequestMapping("/admin")
-    public String adminHome(){
-        return "Administrator access only";
+    @RequestMapping("/searchStudent")
+    public String searchStudent(){
+
+        return "search-student-page";
     }
 
 
