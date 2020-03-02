@@ -39,20 +39,20 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Lets you connect to a JDBC driver
+		<!-- Lets you connect to a JDBC driver -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
-		Gives you the connectors for MySql... Note: If you are still failing
-		 a connection, make sure connector/J is installed
+		<!-- Gives you the connectors for MySql... Note: If you are still failing
+		 a connection, make sure connector/J is installed -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		-->
+
 
 
 		<!-- J-unit -->
