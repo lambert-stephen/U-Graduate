@@ -65,7 +65,7 @@ We should at least have the following amount of toy data:
 
 Our app should be able to open to a login page where we can choose if we are a student or admin, We should be able to register and login as a Student, this information should be stored in our DB.All the student functionalities 
 
--Class Functionalities for Students should be done and their CRUD test suite should be written. -if a student registers, their name and credentials should be added to our DB -students shouldn't be allowed to register twice, login with wrong credentials, etc.
+-Class Functionalities for Students should be done and their CRUD test suite should be written. -if a student registers, their name and credentials should be added to our DB.
 -student should be able to search for a class and return the proper query. 
 -students should be able to query unfinished classes and results should be displayed to user
 -students should be able to query classes they have already completed 
@@ -78,8 +78,7 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 
 ## Deliverables for checkpoint 4
 
-Outline in English what the deliverables will be for checkpoint 4. Reminder that this is not *due*
-until checkpoint 2, but failing to plan is planning to fail.
+Have all class CRUD functionalities up and running (Student, Advisor, College, Major, Class) . Database populated fully with test data. Test suite should be written for all classes. Have front end partially configured and have it properly updating our DB. 
 
 For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
 
