@@ -22,9 +22,7 @@ public class Student {
     @Column(name = "major")
     private String major;
 
-
-    public Student(){
-
+    public Student() {
     }
 
     public Student(int id, String firstName, String lastName, String major){
