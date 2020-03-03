@@ -2,6 +2,7 @@ package com.web_dev_494.uGraduate.dao;
 
 import com.web_dev_494.uGraduate.entity.Student;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,5 +33,12 @@ public class StudentDAOFunctionality implements StudentDAO {
         List<Student> students = theQuery.getResultList();
 
         return students;
+    }
+
+    @Override
+    @Transactional
+    public void save(Student student){
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.saveOrUpdate(student);
     }
 }

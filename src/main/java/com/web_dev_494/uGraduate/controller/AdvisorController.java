@@ -5,6 +5,8 @@ import com.web_dev_494.uGraduate.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +37,20 @@ public class AdvisorController {
     public String searchStudent(Model model){
 
         return "search-student-page";
+    }
+
+    @RequestMapping("/addStudent")
+    public String addStudent(Model model){
+        Student student = new Student();
+        model.addAttribute(student);
+        return "add-student-page";
+    }
+
+    @PostMapping("/addedStudent")
+    public Student addStudent(@ModelAttribute("newStudent") Student student){
+        student.setId(0);
+        studentDAO.save(student);
+        return student;
     }
 /*
 

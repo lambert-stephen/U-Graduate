@@ -39,10 +39,9 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 
 ## Deliverables for checkpoint 4
 
-Outline in English what the deliverables will be for checkpoint 4. Reminder that this is not *due*
-until checkpoint 2, but failing to plan is planning to fail.
-
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+Our team ran into a few issues with the querying. 
+We were able to upload our application onto AWS with an instance of MySql. 
+These were both functioning. We were not able to 
 
 ## Deliverables for final project
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Fabian
@@ -13,6 +14,14 @@
 <body>
 
 add student page
+
+<form:form action= "addedStudent" modelAttribute= "newStudent" method="get">
+
+    Enter Student's first name <form:input path="name"/>
+    Enter Student's last name  <form:input path="userName"/>
+    <input type="submit" value="Submit">
+
+</form:form>
 
 </body>
 </html>
