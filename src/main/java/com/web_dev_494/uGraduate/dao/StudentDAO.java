@@ -1,6 +1,6 @@
 package com.web_dev_494.uGraduate.dao;
 
-import com.web_dev_494.uGraduate.student.Student;
+import com.web_dev_494.uGraduate.entity.Student;
 
 import java.util.List;
 

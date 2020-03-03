@@ -14,10 +14,10 @@
 
 
 <a href="${pageContext.request.contextPath}/advisor/login"> Back </a>
-<form action="${pageContext.request.contextPath}/advisor/searchResults" method="get">
+<form action="${pageContext.request.contextPath}/api/students" method="get">
 
     <label>
-        <input type="text" placeholder="Enter student id number" name="searchValue">
+        <input type="text" placeholder="Enter part of the name" name="searchValue">
     </label>
 
     <input type="submit">

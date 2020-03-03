@@ -1,15 +1,24 @@
 package com.web_dev_494.uGraduate.controller;
 
+import com.web_dev_494.uGraduate.dao.StudentDAO;
+import com.web_dev_494.uGraduate.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/advisor")
+import java.util.List;
+
 @Controller
+@RequestMapping("/advisor")
 public class AdvisorController {
+    private StudentDAO studentDAO;
+
+    @Autowired
+    public AdvisorController(StudentDAO studentDAO){
+        this.studentDAO = studentDAO;
+    }
 
     @RequestMapping("/login")
     public String home(){
@@ -27,14 +36,19 @@ public class AdvisorController {
 
         return "search-student-page";
     }
+/*
 
     @RequestMapping("/searchResults")
     public String searchResults(@RequestParam("searchValue") String searchValue, Model model){
         System.out.println("Search Value: " + searchValue);
 
+        List<Student> students;
 
+        students = studentDAO.findAll();
 
-        return "search-student-page";
+        model.addAttribute("students", students);
+        return "search-results-page";
     }
+*/
 
 }
