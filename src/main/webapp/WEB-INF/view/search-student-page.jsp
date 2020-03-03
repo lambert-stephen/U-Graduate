@@ -11,6 +11,18 @@
     <title>Title</title>
 </head>
 <body>
-search student page
+
+
+<a href="${pageContext.request.contextPath}/advisor/login"> Back </a>
+<form action="${pageContext.request.contextPath}/advisor/searchResults" method="get">
+
+    <label>
+        <input type="text" placeholder="Enter student id number" name="searchValue">
+    </label>
+
+    <input type="submit">
+
+</form>
+
 </body>
 </html>
