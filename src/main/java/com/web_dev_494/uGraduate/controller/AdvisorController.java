@@ -27,12 +27,6 @@ public class AdvisorController {
         return "admin-homepage";
     }
 
-    @RequestMapping("/addStudent")
-    public String addStudent(){
-
-        return "add-student-page";
-    }
-
     @RequestMapping("/searchStudent")
     public String searchStudent(Model model){
 
