@@ -24,40 +24,30 @@ WAPS 10 to prevent:
 1: Injection
   - We are using hibernate and if you properly use your HQL queries to
   take input as Strings in the configuration page, SQLi cannot be accomplished.
-  This is equivalent to prepared statements in the HQL world.
-  
+  This is equivalent to prepared statements.
 2: Broken Auth
   - 2 Factor Authentication.
-  
 3: Sensitive Data Exposure
-  - Encrypt the data at rest. However, most of the data needed for students at rest isn't PII or
+  - Encrypt the data at rest. However, most of the data at rest isn't PII or
   highly senstitive at all. But will still encrypt at rest data.
-  
 4: XML Externals
   - With the exception of the Spring configuration file, we will not be parsing
   or accepting xml in any form
-  
 5: Broken Access control
   - Ensure a multi step process to register an admin. Admin actions will be
   constantly logged and monitored. Mainly to find erroneous/strange behavior.
   But also. Trust but verify.
-  
 6: Security Misconfiguration
   - Spring Security denies forbidden access through filters. Start with very
   specific security filters and work the way up to the not so secure filters to
   ensure there is no mistaken fall through
-  
 7: XSS
   - Users will not be posting code that will be readable to other students or
   admin. Admin can, and text will need to be sanitized
-  
 8: Insecure Deserialization
   - N/A
-  
 9: Using Components with unsecure
   - Use up to date security features. For example, we are using bcrypt and not
-  most definitely not MD5. We are also not using (unless absolutely necessary) any deprecated
-  functions, APIs, or frameworks. 
-  
+  most definitely not MD5
 10: Insufficient loggin/monitoring
   - Will be logging all data manipulation from the admins.

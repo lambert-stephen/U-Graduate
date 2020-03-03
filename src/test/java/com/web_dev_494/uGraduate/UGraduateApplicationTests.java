@@ -5,5 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class UGraduateApplicationTests {
-	
+
+	@Test
+	void contextLoads() {
+	}
+
 }

@@ -1,11 +1,11 @@
-package com.web_dev_494.uGraduate.student;
+package com.web_dev_494.uGraduate.entity;
 
 
 import javax.persistence.*;
 import java.util.HashMap;
 
 @Entity
-@Table(name="testStudents")
+@Table(name="students")
 public class Student {
 
     @Id
@@ -22,14 +22,11 @@ public class Student {
     @Column(name = "major")
     private String major;
 
-
-    public Student(){
-
+    public Student() {
     }
 
-    public Student(int id, String firstName, String lastName, String major){
+    public Student(String firstName, String lastName, String major){
 
-        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.major = major;
