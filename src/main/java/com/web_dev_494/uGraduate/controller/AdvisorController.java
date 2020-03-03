@@ -31,6 +31,9 @@ public class AdvisorController {
     @RequestMapping("/searchResults")
     public String searchResults(@RequestParam("searchValue") String searchValue, Model model){
         System.out.println("Search Value: " + searchValue);
+
+
+
         return "search-student-page";
     }
 
