@@ -1,5 +1,18 @@
 # We Push to Master Final Project
 
+**NOTE** 
+To run our application, go to the following link:
+TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
+
+This is our deployed application.
+
+username: admin
+password: 12345qwert
+
+login, click on the search for a student hyperlink, then just press submit to get a query of every single entry
+on the AWS database
+
+add student was getting implemented but there wasn't a ton of time to do so, so it is broken. 
 
 ## Description
 
@@ -46,9 +59,10 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 
 ## Deliverables for checkpoint 4
 
-Our team ran into a few issues with the querying.
-We were able to upload our application onto AWS with an instance of MySql.
-These were both functioning. We were not able to
+Finish implementing what we did not get to do for checkpoint 2. 
+Also start making the front end more interactive. 
+
+Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an admin adds another student or another admin. 
 
 ## Deliverables for final project
 
