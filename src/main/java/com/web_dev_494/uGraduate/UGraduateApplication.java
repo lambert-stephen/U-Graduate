@@ -56,10 +56,13 @@ public class UGraduateApplication extends SpringBootServletInitializer {
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter{
 
+	// this is needed for bcrypt
 	private final PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 	@Bean
 	UserDetailsService authentication(){
+
+		//builds a user for functionality
 		UserDetails defaultAdmin = User.builder()
 				.username("admin")
 				.password(pwEncoder.encode("12345qwert"))
