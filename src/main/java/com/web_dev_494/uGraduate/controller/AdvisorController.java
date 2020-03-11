@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
+
+// TODO: fix the mappings to add student, find student by id, etc
 
 @Controller
 @RequestMapping("/advisor")
@@ -29,7 +32,8 @@ public class AdvisorController {
 
     @RequestMapping("/searchStudent")
     public String searchStudent(Model model){
-
+        Integer student = new Integer(0);
+        model.addAttribute(student);
         return "search-student-page";
     }
 
@@ -41,7 +45,8 @@ public class AdvisorController {
     }
 
     @PostMapping("/addedStudent")
-    public Student addStudent(@ModelAttribute("newStudent") Student student){
+    public Student addStudent(@ModelAttribute("student") Student student){
+
         student.setId(0);
         studentDAO.save(student);
         return student;
