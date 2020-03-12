@@ -15,7 +15,7 @@
 
 add student page
 
-<form:form action= "${pageContext.request.contextPath}/api/students/" modelAttribute= "student" method="get">
+<form:form action= "${pageContext.request.contextPath}/advisor/addedStudent" modelAttribute= "student" method="post">
 
     Enter Student's first name <form:input path="firstName"/>
     Enter Student's last name  <form:input path="lastName"/>

@@ -32,7 +32,7 @@
 ${pageContext.request.contextPath}/api/students/{studentId}
 --%>
 
-<form:form name="studentAdd" action="${pageContext.request.contextPath}/api/student" method="get">
+<form:form name="studentAdd" action="${pageContext.request.contextPath}/advisor/studentById" method="get">
 
     <label>
         <input type="text" placeholder="Search by student id" name="studentId">
