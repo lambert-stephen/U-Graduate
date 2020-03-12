@@ -59,5 +59,4 @@ public class StudentDAOFunctionality implements StudentDAO {
 
         query.executeUpdate();
     }
-
 }

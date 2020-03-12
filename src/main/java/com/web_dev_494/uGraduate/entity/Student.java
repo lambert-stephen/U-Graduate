@@ -1,6 +1,5 @@
 package com.web_dev_494.uGraduate.entity;
 
-
 import javax.persistence.*;
 import java.util.HashMap;
 
