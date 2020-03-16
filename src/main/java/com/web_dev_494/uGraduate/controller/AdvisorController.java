@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+// TODO: fix the mappings to add student, find student by id, etc
 
 @Controller
 @RequestMapping("/advisor")
