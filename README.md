@@ -13,6 +13,7 @@ login, click on the search for a student hyperlink, then just press submit to ge
 on the AWS database
 
 add student was getting implemented but there wasn't a ton of time to do so, so it is broken. 
+
 To run our test cases, Run the UGraduateApplicationTests in IntelliJ or Eclipse, all current test will pass, and there is still more to be added.
 ## Description
 
