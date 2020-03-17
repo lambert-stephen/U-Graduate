@@ -1,102 +1,108 @@
 package com.web_dev_494.uGraduate;
 
+import com.web_dev_494.uGraduate.controller.AdvisorController;
+import com.web_dev_494.uGraduate.dao.StudentDAO;
+import com.web_dev_494.uGraduate.entity.Student;
+import com.web_dev_494.uGraduate.rest.StudentRestController;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class UGraduateApplicationTests {
+	@Autowired
+	private AdvisorController advisorController;
+	@Autowired
+	private StudentRestController  studentController;
+	@Autowired
+	private MockMvc mockMvc;
+	@Autowired
+	private MockMvc mockMvc2;
+	@Autowired
+	private StudentDAO dao;
 
+	//checks if student dao is not null
 	@Test
-	void contextLoads() {
+	void contextLoads() throws Exception {
+		assertThat(dao).isNotNull();
 	}
 	@Test
-	void contextLoads() {
+	@Transactional
+	@Rollback(true)
+	//Tests if student in database is found
+	public void findAllTest(){
+		Student student2 = new Student("","","");
+		List<Student> students = dao.findAll();
+		Assertions.assertEquals(student2.getFirstName(),student2.getLastName(),student2.getMajor());
 	}
-
-	//English Description Test Cases
-
-	//All test will be written in JUnit
-
-	 // when a student registers their name should appear in the database
-
 	@Test
-	public void registerTest() {
-		// assertSame(registered_student_object, search database_for student name, id);
+	//tests cases to test the login mapping
+	public void testLoginController() throws Exception{
+		this.mockMvc.perform(get("/login")).andExpect(status().isOk())
+				.andExpect(content().string(containsString("")));
 	}
-
-	// when a class is searched, the classes should all appear in the database
-
 	@Test
-	public void searchTest() {
-		// assertSame(name of class,search the database for class name)
+	//tests cases to test search student mapping
+	public void testSearchController() throws Exception{
+		this.mockMvc.perform(get("/searchStudent")).andExpect(status().is4xxClientError())
+				.andExpect(content().string(containsString("")));
 	}
-
-	// if a student unregisters, then the student should no longer be in the
-		// database
-
 	@Test
-	public void unregisterTest() {
-		// assertTrue(bool unregistered value, search student database for name and id);
+	//tests cases to test add student mapping
+	public void testAddController() throws Exception{
+		this.mockMvc.perform(get("/addStudent")).andExpect(status().is4xxClientError())
+				.andExpect(content().string(containsString("")));
 	}
-
-	// Number of seats should match num seats in the database
-
 	@Test
-	public void numStudentsTest() {
-		assertSame(numSeats, allSeats);
+	//tests cases to test that student mapping finds all students
+	public void findStudents(){
+		List<Student> s = studentController.findAll();
+		assertThat(s).hasSizeGreaterThan(1);
 	}
-
-	// When a student is added, the students should appear in the database
-
 	@Test
-	public void addStudentTest() {
-		assertSame(studentName, nameStudent);
+	//Tests to check if the students major is saved correctly
+	public void saveTest(){
+		Student student1 = new Student("John","Doe","CS");
+		student1.setMajor("CS");
+		student1.setLastName("Lambert");
+		student1.setFirstName("Stephen");
+		dao.save(student1);
+		Assertions.assertNotNull(student1.getMajor());
 	}
-
-	// When a class is added, the class should appear in the database
-
 	@Test
-	public void addClassTest() {
-		assertSame(className,search database for class);
+	//Tests to check if the students first name is saved correctly
+	public void saveTest2(){
+		Student student2 = new Student("Tyler","Con","Business");
+		student2.setMajor("Business");
+		student2.setLastName("Con");
+		student2.setFirstName("Tyler");
+		dao.save(student2);
+		Assertions.assertNotNull(student2.getFirstName());
 	}
-
-	// When a student is removed from a class, the student should not appear in the
-		// database
-
 	@Test
-	public void removeStudentTest() {
-		assertNotSame(nameStudent,search database for student);
+	//Tests to check if the students last name is saved correctly
+	public void saveTest3(){
+		Student student3 = new Student("Mark","Johnson","Math");
+		student3.setMajor("Math");
+		student3.setLastName("Johnson");
+		student3.setFirstName("Mark");
+		dao.save(student3);
+		Assertions.assertNotNull(student3.getLastName());
 	}
-
-	• // When a class is removed, the class should not appear in the database
-
-	@Test
-	public void removeClassTest() {
-		assertNotSame(className,search database for class);
-	}
-
-	// all majors in the database should appear when searched
-
-	@Test
-	public void allMajorsTest() {
-		assertSame(majorName,search database for major);
-	}
-
-	// all colleges in the database should appear when searched
-
-	@Test
-	public void allCollegeTest() {
-		assertSame(collegeName,search database for college);
-	}
-
-	// when class completion is updated, the database should show a true value
-
-	@Test
-	public void completionTest(){
-		assertTrue(className,search database for a true value);
-	}
-
-
-
-
 }
+
+
