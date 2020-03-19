@@ -9,8 +9,8 @@ public interface SectionDAO {
 	//create:  adding a section
 	 public void addSection(Section s);
 	 
-	//update: 
-	 public void deleteSection();
+	//update:  deletes by CRN
+	 public void deleteSection(int CRN);
 	//delete: 
 	
 }
