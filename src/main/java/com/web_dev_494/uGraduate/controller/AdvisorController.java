@@ -1,6 +1,5 @@
 package com.web_dev_494.uGraduate.controller;
 
-import com.web_dev_494.uGraduate.dao.StudentDAO;
 import com.web_dev_494.uGraduate.entity.Student;
 import com.web_dev_494.uGraduate.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.util.List;
 public class AdvisorController {
 
     private StudentService studentService;
-
+    
     @Autowired
     public AdvisorController(StudentService studentService){
         this.studentService = studentService;
