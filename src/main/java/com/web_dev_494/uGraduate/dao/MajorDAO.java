@@ -6,16 +6,15 @@ import java.util.List;
 
 public interface MajorDAO {
 
-    /*
-    public List<Student> findAll();
-    public void save(Student student);
-    public Student findById(int id);
-    public void deleteById(int id);
-     */
-
+    // checked!
     public List<Major> findAll();
+
+    // saved
     public void save(Major major);
+
+    // lookin gooooooood
     public Major findById(int id);
+
     public void deleteById(int id);
 
 }

@@ -65,6 +65,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return new InMemoryUserDetailsManager(defaultAdmin, defaultTest);
 	}
 
+	// TODO: Fix xss, vulnerable if using /advisor/XSSEXAMPLE
 	// Configures roles on endpoints
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{

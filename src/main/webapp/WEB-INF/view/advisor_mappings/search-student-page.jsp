@@ -16,7 +16,7 @@
 <body>
 
 
-<a href="${pageContext.request.contextPath}/advisor/login"> Back </a>
+<a href="${pageContext.request.contextPath}/advisor/home"> Back </a>
 
 <%--
 <form action="${pageContext.request.contextPath}/api/students" method="get">

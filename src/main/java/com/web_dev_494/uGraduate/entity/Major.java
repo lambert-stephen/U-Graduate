@@ -6,58 +6,57 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-/*
+
 @Entity
-@Table(name="Major")
-*/
+@Table(name="major")
 public class Major {
-	/*
-	  @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    @Column(name = "majorId")
-	  	private int majorId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "major_id")
+    private int majorId;
 	  
-	  @Column(name = "majorName")
-	    private String majorName;
-	  
-	  
-	  //constructors
-		public Major() {
-	    }
+    @Column(name = "major_name")
+    private String majorName;
 
-	    public Major(int majorId, String majorName){
 
-	        this.majorId = majorId;
-	        this.majorName = majorName;
-	    
-	    }
-	  
-	    public int getMajorId() {
-		return majorId;
-	}
+    //constructors
+    public Major() {
+    }
 
-	public void setMajorId(int majorId) {
-		this.majorId = majorId;
-	}
+    public Major(int majorId, String majorName){
 
-	public String getMajorName() {
-		return majorName;
-	}
-	
+        this.majorId = majorId;
+        this.majorName = majorName;
 
-	public void setMajorName(String majorName) {
-		this.majorName = majorName;
-	}
+    }
+
+    public void setMajorId(int majorId) {
+        this.majorId = majorId;
+    }
+
+    public int getMajorId() {
+        return majorId;
+    }
+
+    public String getMajorName() {
+        return majorName;
+    }
+
+
+    public void setMajorName(String majorName) {
+        this.majorName = majorName;
+    }
 
     @Override
     public String toString() {
         return "Major{" +
-                "majorId=" + majorId +
-                ", majorName='" + majorName + '\'' +
-                '}';
+            "majorId=" + majorId +
+            ", majorName='" + majorName + '\'' +
+            '}';
     }
 
 
 	    
-	*/
+
 }

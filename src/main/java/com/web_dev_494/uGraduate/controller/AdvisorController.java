@@ -1,6 +1,8 @@
 package com.web_dev_494.uGraduate.controller;
 
+import com.web_dev_494.uGraduate.entity.Major;
 import com.web_dev_494.uGraduate.entity.Student;
+import com.web_dev_494.uGraduate.service.MajorService;
 import com.web_dev_494.uGraduate.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,12 @@ import java.util.List;
 public class AdvisorController {
 
     private StudentService studentService;
+    private MajorService majorService;
     
     @Autowired
-    public AdvisorController(StudentService studentService){
+    public AdvisorController(StudentService studentService, MajorService majorService){
         this.studentService = studentService;
+        this.majorService = majorService;
     }
 
     @RequestMapping("/home")
@@ -70,6 +74,40 @@ public class AdvisorController {
         model.addAttribute("students", students);
 
         return "advisor_mappings/search-results-page";
+    }
+
+    @RequestMapping("/testQueries")
+    public String testQ(Model model){
+
+        // Saves a new Major!
+        /*
+        Major major = new Major(0, "Underwater Basket Weaving");
+        majorService.save(major);
+        */
+
+        // Finds a list of Majors
+        /*
+        List<Major> majors = majorService.findAll();
+        model.addAttribute("majors", majors);
+        */
+
+        Major major = majorService.findById(1);
+        model.addAttribute("majors", major);
+
+        return "test/test";
+    }
+
+
+    @RequestMapping("/XSSExample")
+    public String xss(){
+        return "xss";
+    }
+
+    @RequestMapping("/XSSExample-next")
+    public String xssNext(@RequestParam("inputValue") String input, Model model){
+
+        model.addAttribute("input", input);
+        return "xss-next";
     }
 
 }
