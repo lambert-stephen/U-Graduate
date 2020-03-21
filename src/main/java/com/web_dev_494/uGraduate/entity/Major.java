@@ -6,11 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/*
 @Entity
 @Table(name="Major")
+*/
 public class Major {
-	
+	/*
 	  @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Column(name = "majorId")
@@ -58,5 +59,5 @@ public class Major {
 
 
 	    
-	
+	*/
 }

@@ -9,11 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/*
 @Entity
-@Table(name="Section")
+@Table(name="Section")*/
 public class Section {
-	
+	/*
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	 @Column(name = "CRN")
@@ -72,7 +72,7 @@ public class Section {
 		this.students = students;
 	}
 	 
-	 
+	 */
 	 
 
 }

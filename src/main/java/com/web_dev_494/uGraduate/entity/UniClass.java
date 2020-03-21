@@ -2,11 +2,11 @@ package com.web_dev_494.uGraduate.entity;
 import javax.persistence.*;
 
 import java.util.HashMap;
-
+/*
 @Entity
-@Table(name="UniClass")
+@Table(name="UniClass")*/
 public class UniClass {
-	
+	/*
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "classId")
@@ -41,7 +41,7 @@ public class UniClass {
 	public void setHomeMajor(Major homeMajor) {
 		this.homeMajor = homeMajor;
 	}
-	
+	*/
 	
 
 }

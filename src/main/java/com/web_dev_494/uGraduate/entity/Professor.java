@@ -6,11 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/*
 @Entity
-@Table(name="Professor")
+@Table(name="Professor")*/
 public class Professor {
-
+/*
 
 	@Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Professor {
 	 @Column(name = "name")
 	 private String name;
 	 
-	 @Column(name = "major")
+	 @Column(name = "majorId")
 	 private Major major;
 	 
 	 //constructors
@@ -55,5 +55,5 @@ public class Professor {
 	public void setMajor(Major major) {
 		this.major = major;
 	}
-	
+	*/
 }

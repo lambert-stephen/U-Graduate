@@ -1,6 +1,5 @@
 package com.web_dev_494.uGraduate.controller;
 
-import com.web_dev_494.uGraduate.dao.StudentDAO;
 import com.web_dev_494.uGraduate.entity.Student;
 import com.web_dev_494.uGraduate.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,21 +20,21 @@ public class AdvisorController {
         this.studentService = studentService;
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/home")
     public String home(){
-        return "admin-homepage";
+        return "advisor_mappings/admin-homepage";
     }
 
     @RequestMapping("/searchStudent")
     public String searchStudent(Model model){
-        return "search-student-page";
+        return "advisor_mappings/search-student-page";
     }
 
     @RequestMapping("/addStudent")
     public String addStudent(Model model){
         Student student = new Student();
         model.addAttribute(student);
-        return "add-student-page";
+        return "advisor_mappings/add-student-page";
     }
 
     @PostMapping("/addedStudent")
@@ -43,7 +42,7 @@ public class AdvisorController {
 
         student.setId(0);
         studentService.save(student);
-        return "add-results-page";
+        return "advisor_mappings/add-results-page";
     }
 
     //---------------------------------------------------------------
@@ -61,12 +60,16 @@ public class AdvisorController {
             throw new RuntimeException("Student not found - " + studentId);
         }
         model.addAttribute("student", student);
-        return "search-results-page-id";
+        return "advisor_mappings/search-results-page-id";
     }
 
-    @RequestMapping("/studentAll")
-    public Student addStudentAction(@ModelAttribute("newStudent") Student student){
-        studentService.save(student);
-        return student;
+    @RequestMapping("/studentByName")
+    public String getStudentName(@RequestParam("studentName") String studentName, Model model){
+
+        List<Student> students = studentService.findByName(studentName);
+        model.addAttribute("students", students);
+
+        return "advisor_mappings/search-results-page";
     }
+
 }

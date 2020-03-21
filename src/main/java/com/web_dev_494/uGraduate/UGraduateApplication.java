@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -14,38 +16,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 @SpringBootApplication
 public class UGraduateApplication extends SpringBootServletInitializer {
 
-	/*
-	private static void test(){
-		String jdbcUrl = "jdbc:mysql://localhost:3306/student_directory?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-		String username = "dev";
-		String password = "dev";
-		try{
-
-			System.out.println("connecting to database " + jdbcUrl);
-			Connection myConnection = DriverManager.getConnection(jdbcUrl, username, password);
-			System.out.println("Connection successful!!!");
-		}
-		catch (Exception exc){
-			System.out.println("FAILLLLLLLLL*********************************");
-			exc.printStackTrace();
-		}
-	}
-
-	 */
-
+	// This is needed to deploy on AWS. Please don't touch this
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(UGraduateApplication.class);
 	}
 
+	// Initializes Spring Boot. Also, don't touch this
 	public static void main(String[] args) {
 		SpringApplication.run(UGraduateApplication.class, args);
 		//test();
@@ -53,37 +34,81 @@ public class UGraduateApplication extends SpringBootServletInitializer {
 
 }
 
+// Security Configuration class. Updates roles and assigns security to classpaths
+// TODO: Move this into its own class and call methods off the instance. REMEMBER DEPENDENCY INJECTION
+@Configuration
 @EnableWebSecurity
+// Order here is important. In order to have multiple ant matchers on different map heirarchies
+@Order(1)
 class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-	// this is needed for bcrypt
+	// this is needed for bcrypt hashing
 	private final PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
+	// Bean used to create roles for spring security
 	@Bean
 	UserDetailsService authentication(){
 
 		//builds a user for functionality
 		UserDetails defaultAdmin = User.builder()
-				.username("admin")
-				.password(pwEncoder.encode("12345qwert"))
-				.roles("ADMIN", "USER")
+				.username("admin") // Literally the username you use to login
+				.password(pwEncoder.encode("admin")) // encodes password into bcrypt
+				.roles("ADVISOR") // These roles will be added to the user.builder
 				.build();
 
 		UserDetails defaultTest = User.builder()
-				.username("test")
-				.password(pwEncoder.encode("12345qwert"))
-				.roles("USER")
+				.username("student")
+				.password(pwEncoder.encode("student"))
+				.roles("STUDENT")
 				.build();
+
 		return new InMemoryUserDetailsManager(defaultAdmin, defaultTest);
 	}
 
+	// Configures roles on endpoints
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.authorizeRequests().mvcMatchers("/admin/**").hasRole("ADMIN")
-				.and().authorizeRequests().anyRequest().authenticated()
-				.and().formLogin().and().httpBasic();
+		// this first line is making sure all /admin/ mappings can only be used by "ADMIN" users
+		http
+				.authorizeRequests()
+					.antMatchers("/advisor/**").hasRole("ADVISOR")
+					.antMatchers("/student/**").hasRole("STUDENT")
+				.and().authorizeRequests()
+					.anyRequest().authenticated()
+				.and().formLogin()
+				.and().httpBasic()
+				.and()
+				.formLogin().defaultSuccessUrl("/loginSuccess", true);
 
-		http.formLogin().defaultSuccessUrl("/advisor/login", true);
 	}
-
 }
+/*
+
+@Configuration
+@Order(2)
+class adminConfig extends WebSecurityConfigurerAdapter{
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+
+		// Sends to spring login screen on /advisor only allowing "ADVISOR" role
+
+		http.authorizeRequests().antMatchers("/student/**").hasRole("STUDENT")
+				//.and().
+				//authorizeRequests().anyRequest().authenticated()
+				.and().formLogin().and().httpBasic()
+				.and().formLogin().defaultSuccessUrl("/student/login", true);
+
+	}
+}
+
+@Configuration
+@Order(3)
+class studentConfig extends WebSecurityConfigurerAdapter{
+	@Override
+	protected void configure(HttpSecurity http) throws Exception{
+
+		http.authorizeRequests()
+				.antMatchers("/", "/home" ).permitAll();
+	}
+}
+*/

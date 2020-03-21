@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -58,5 +59,21 @@ public class StudentDAOFunctionality implements StudentDAO {
         query.setParameter("studentId", id);
 
         query.executeUpdate();
+    }
+
+    @Override
+    public List<Student> findByName(String name) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("from Student s where" + " s.firstName " +
+                "LIKE CONCAT('%', :studentName, '%') OR s.lastName LIKE CONCAT('%', :studentName, '%')");
+        query.setParameter("studentName", name);
+
+        return query.getResultList();
+    }
+
+    @Override
+    public void deleteByName(String name) {
+
     }
 }

@@ -34,9 +34,9 @@ public class StudentController {
 	  //see what classes they finished
 	  //see what classes they have left
 	  
-	    @RequestMapping("/login")
+	    @RequestMapping("/home")
 	    public String home(){
-	        return "admin-homepage";
+	        return "student_mappings/studentHome";
 	    }
 	    
 	    @RequestMapping("/register")

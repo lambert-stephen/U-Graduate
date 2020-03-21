@@ -41,4 +41,14 @@ public class StudentServiceFunctionality implements StudentService {
     public void deleteById(int id) {
         studentDAO.deleteById(id);
     }
+
+    @Override
+    public List<Student> findByName(String name) {
+        return studentDAO.findByName(name);
+    }
+
+    @Override
+    public void deleteByName(String name) {
+        studentDAO.deleteByName(name);
+    }
 }
