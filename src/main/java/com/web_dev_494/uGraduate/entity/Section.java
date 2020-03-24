@@ -28,8 +28,9 @@ public class Section {
 	 }
 
 	 //how to handle assigning the students array list
-	 public Section(String className){
+	 public Section(String className, int CRN){
 		 this.className = className;
+		 this.CRN = CRN;
 	 }
 	 
 	public int getCRN() {

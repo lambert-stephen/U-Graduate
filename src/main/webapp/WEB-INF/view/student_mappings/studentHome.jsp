@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-Student page
+Welcome 
 </body>
 </html>

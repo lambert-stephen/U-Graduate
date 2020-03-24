@@ -1,12 +1,17 @@
 package com.web_dev_494.uGraduate.service;
 
 	import com.web_dev_494.uGraduate.entity.Section;
-	
-	public interface SectionService{
-		 //public Section find(int CRN);
-		 public void addSection(Section s);
-		 //public void deleteSection(int CRN);
-		
+
+	import java.util.List;
+
+public interface SectionService{
+
+		public void save(Section section);
+		public Section findByCRN(int CRN);
+		public void deleteByCRN(int CRN);
+		public List<Section> findByName(String name);
+		public void deleteByName(String name);
+
 	}
 	
 

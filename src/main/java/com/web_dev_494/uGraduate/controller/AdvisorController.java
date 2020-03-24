@@ -119,21 +119,23 @@ public class AdvisorController {
         sectionService.addSection(testSection);
 
         */
+/*
 
         Professor tmpProf = professorService.findById(2);
         System.out.println(tmpProf.getName());
         System.out.println(tmpProf.getSections());
+*/
 
         return "test/test";
     }
 
 
-    @RequestMapping("/XSSExample")
+    //@RequestMapping("/XSSExample")
     public String xss(){
         return "xss";
     }
 
-    @RequestMapping("/XSSExample-next")
+    //@RequestMapping("/XSSExample-next")
     public String xssNext(@RequestParam("inputValue") String input, Model model){
 
         model.addAttribute("input", input);

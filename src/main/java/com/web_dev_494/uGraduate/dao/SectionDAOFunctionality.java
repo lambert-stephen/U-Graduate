@@ -14,36 +14,45 @@ import com.web_dev_494.uGraduate.entity.Section;
 @Repository
 public class SectionDAOFunctionality implements SectionDAO {
 	
-	 private EntityManager entityManager;
+		private EntityManager entityManager;
 
 	    @Autowired
 	    public SectionDAOFunctionality(EntityManager entityManager){
 	        this.entityManager = entityManager;
 	    }
-/*
-	    @Override
-	    public Section find(int CRN) {
-	    	//get current hibernate session
-	        Session currentSession = entityManager.unwrap(Session.class);
-	        //get student
-	        return currentSession.get(Section.class, CRN);
-	    }
-	    */
-	    //adding/updating
-	    @Override
-		 public void addSection(Section s) {
-	    	 Session currentSession = entityManager.unwrap(Session.class);
-	         currentSession.saveOrUpdate(s);
-		 }
-	    /*
-	    @Override
-		//update: 
-		 public void deleteSection(int CRN) {
-	    	 Session currentSession = entityManager.unwrap(Session.class);
-	         Query query = currentSession.createQuery("delete from Section where id=:CRN");
-	         query.setParameter("CRN", CRN);
 
-	         query.executeUpdate();
-		 }*/
-		//delete: 
+	    @Override
+		 public void save(Section section) {
+	    	 Session currentSession = entityManager.unwrap(Session.class);
+	         currentSession.saveOrUpdate(section);
+		 }
+
+	@Override
+	public Section findByCRN(int CRN) {
+
+	    	Session session = entityManager.unwrap(Session.class);
+	    	return session.get(Section.class, CRN);
+	}
+
+	@Override
+	public List<Section> findByName(String name) {
+
+	    	Session session = entityManager.unwrap(Session.class);
+
+	    	Query query = session.createQuery("from Section s where" + " s.className " +
+					"LIKE CONCAT('%', :name, '%') ");
+			query.setParameter("name", name);
+
+			return query.getResultList();
+	}
+
+	@Override
+	public void deleteByName(String name) {
+
+	}
+
+	@Override
+	public void deleteByCRN(int id) {
+
+	}
 }

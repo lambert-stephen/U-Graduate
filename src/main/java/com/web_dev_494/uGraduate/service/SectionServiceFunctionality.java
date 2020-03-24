@@ -5,33 +5,40 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web_dev_494.uGraduate.dao.SectionDAO;
 import com.web_dev_494.uGraduate.entity.Section;
 
+import java.util.List;
+
 @Service 
 public class SectionServiceFunctionality implements SectionService {
 	
 	SectionDAO sectionDAO;
 	
-	
-	    @Autowired
-	    public SectionServiceFunctionality(SectionDAO sectionDAO){
-	        this.sectionDAO = sectionDAO;
-	    }
-/*
+	@Autowired
+	public SectionServiceFunctionality(SectionDAO sectionDAO){
+		this.sectionDAO = sectionDAO;
+	}
 
-	    @Override
-	    @Transactional
-	    public Section find(int CRN){
-	        return sectionDAO.find(CRN);
-	    }
-*/
+	@Override
+	public void save(Section section) {
+		sectionDAO.save(section);
+	}
 
-	    @Override
-	    public void addSection(Section s) {
-	        sectionDAO.addSection(s);
-	    }
-/*
-	    @Override
-	    @Transactional
-	    public void deleteSection(int CRN) {
-	        sectionDAO.deleteSection(CRN);
-	    }*/
+	@Override
+	public Section findByCRN(int CRN) {
+		return sectionDAO.findByCRN(CRN);
+	}
+
+	@Override
+	public void deleteByCRN(int CRN) {
+		sectionDAO.deleteByCRN(CRN);
+	}
+
+	@Override
+	public List<Section> findByName(String name) {
+		return sectionDAO.findByName(name);
+	}
+
+	@Override
+	public void deleteByName(String name) {
+		sectionDAO.deleteByName(name);
+	}
 }

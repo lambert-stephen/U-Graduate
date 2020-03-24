@@ -36,7 +36,7 @@ public class UGraduateApplication extends SpringBootServletInitializer {
 
 // Security Configuration class. Updates roles and assigns security to classpaths
 // TODO: Move this into its own class and call methods off the instance. REMEMBER DEPENDENCY INJECTION
-@Configuration
+
 @EnableWebSecurity
 // Order here is important. In order to have multiple mvcmatchers on different map heirarchies
 class SecurityConfig extends WebSecurityConfigurerAdapter{

@@ -1,5 +1,8 @@
 package com.web_dev_494.uGraduate.dao;
+import com.web_dev_494.uGraduate.entity.Professor;
 import com.web_dev_494.uGraduate.entity.Section;
+
+import java.util.List;
 
 public interface SectionDAO {
 	
@@ -7,10 +10,12 @@ public interface SectionDAO {
 	 //public Section find(int CRN);
 	 
 	//create:  adding a section
-	 public void addSection(Section s);
 
-	//update:  deletes by CRN
-	 //public void deleteSection(int CRN);
-	//delete:
+	public void save(Section section);
+	public Section findByCRN(int CRN);
+	public void deleteByCRN(int CRN);
+	public List<Section> findByName(String name);
+	public void deleteByName(String name);
+
 
 }
