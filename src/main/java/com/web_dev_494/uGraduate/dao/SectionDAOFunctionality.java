@@ -20,7 +20,7 @@ public class SectionDAOFunctionality implements SectionDAO {
 	    public SectionDAOFunctionality(EntityManager entityManager){
 	        this.entityManager = entityManager;
 	    }
-	
+/*
 	    @Override
 	    public Section find(int CRN) {
 	    	//get current hibernate session
@@ -28,14 +28,14 @@ public class SectionDAOFunctionality implements SectionDAO {
 	        //get student
 	        return currentSession.get(Section.class, CRN);
 	    }
-	    
+	    */
 	    //adding/updating
 	    @Override
 		 public void addSection(Section s) {
 	    	 Session currentSession = entityManager.unwrap(Session.class);
 	         currentSession.saveOrUpdate(s);
 		 }
-	    
+	    /*
 	    @Override
 		//update: 
 		 public void deleteSection(int CRN) {
@@ -44,6 +44,6 @@ public class SectionDAOFunctionality implements SectionDAO {
 	         query.setParameter("CRN", CRN);
 
 	         query.executeUpdate();
-		 }
+		 }*/
 		//delete: 
 }

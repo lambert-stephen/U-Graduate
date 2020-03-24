@@ -1,34 +1,34 @@
 package com.web_dev_494.uGraduate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-/*
-@Entity
-@Table(name="Professor")*/
-public class Professor {
-/*
+import org.springframework.beans.factory.annotation.Autowired;
 
-	@Id
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name="professor")
+public class Professor {
+
+     @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name = "professorID")
+	 @Column(name = "professor_id")
 	 private int professorId;
 	 
-	 @Column(name = "name")
+	 @Column(name = "professor_name")
 	 private String name;
-	 
-	 @Column(name = "majorId")
-	 private Major major;
-	 
+
+	 @OneToMany(mappedBy = "professor",
+	 			cascade = {CascadeType.DETACH, CascadeType.MERGE,
+						   CascadeType.DETACH, CascadeType.REFRESH})
+	 private List<Section> sections;
+
 	 //constructors
-	 Professor(){};
-	 Professor(int professorId, String name, Major major){
+	 public Professor(){};
+
+	 public Professor(int professorId, String name){
 		 this.professorId = professorId;
 		 this.name = name;
-		 this.major = major;
 	 }
 	 
 	 //getters and setters
@@ -48,12 +48,21 @@ public class Professor {
 		this.name = name;
 	}
 
-	public Major getMajor() {
-		return major;
+	public List<Section> getSections() {
+		return sections;
 	}
 
-	public void setMajor(Major major) {
-		this.major = major;
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
-	*/
+
+	public void add(Section section){
+	 	if(this.sections == null){
+	 		this.sections = new ArrayList<>();
+		}
+
+	 	this.sections.add(section);
+	 	section.setProfessor(this);
+	}
+
 }

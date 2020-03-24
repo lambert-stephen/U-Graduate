@@ -15,21 +15,23 @@ public class SectionServiceFunctionality implements SectionService {
 	    public SectionServiceFunctionality(SectionDAO sectionDAO){
 	        this.sectionDAO = sectionDAO;
 	    }
+/*
 
 	    @Override
 	    @Transactional
 	    public Section find(int CRN){
 	        return sectionDAO.find(CRN);
 	    }
+*/
 
 	    @Override
 	    public void addSection(Section s) {
 	        sectionDAO.addSection(s);
 	    }
-
+/*
 	    @Override
 	    @Transactional
 	    public void deleteSection(int CRN) {
 	        sectionDAO.deleteSection(CRN);
-	    }
+	    }*/
 }

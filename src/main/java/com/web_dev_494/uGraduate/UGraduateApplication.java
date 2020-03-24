@@ -38,8 +38,7 @@ public class UGraduateApplication extends SpringBootServletInitializer {
 // TODO: Move this into its own class and call methods off the instance. REMEMBER DEPENDENCY INJECTION
 @Configuration
 @EnableWebSecurity
-// Order here is important. In order to have multiple ant matchers on different map heirarchies
-@Order(1)
+// Order here is important. In order to have multiple mvcmatchers on different map heirarchies
 class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	// this is needed for bcrypt hashing
@@ -65,21 +64,24 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 		return new InMemoryUserDetailsManager(defaultAdmin, defaultTest);
 	}
 
-	// TODO: Fix xss, vulnerable if using /advisor/XSSEXAMPLE
+	// TODO: Fix xss. vulnerable if using /advisor/XSSEXAMPLE
 	// Configures roles on endpoints
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		// this first line is making sure all /admin/ mappings can only be used by "ADMIN" users
 		http
 				.authorizeRequests()
-					.antMatchers("/advisor/**").hasRole("ADVISOR")
-					.antMatchers("/student/**").hasRole("STUDENT")
-				.and().authorizeRequests()
-					.anyRequest().authenticated()
-				.and().formLogin()
-				.and().httpBasic()
-				.and()
-				.formLogin().defaultSuccessUrl("/loginSuccess", true);
+					.mvcMatchers("/advisor/**").hasRole("ADVISOR")
+					.mvcMatchers("/student/**").hasRole("STUDENT")
+					.and()
+				.authorizeRequests()
+					.anyRequest()
+					.authenticated()
+					.and()
+				.httpBasic()
+					.and()
+				.formLogin()
+					.defaultSuccessUrl("/loginSuccess", true);
 
 	}
 }

@@ -1,8 +1,12 @@
 package com.web_dev_494.uGraduate.controller;
 
 import com.web_dev_494.uGraduate.entity.Major;
+import com.web_dev_494.uGraduate.entity.Professor;
+import com.web_dev_494.uGraduate.entity.Section;
 import com.web_dev_494.uGraduate.entity.Student;
 import com.web_dev_494.uGraduate.service.MajorService;
+import com.web_dev_494.uGraduate.service.ProfessorService;
+import com.web_dev_494.uGraduate.service.SectionService;
 import com.web_dev_494.uGraduate.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,17 +15,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+// All endpoints starting with /advisor/**
+// REMEMBER: Don't hardcode context path in the jsp files.. use ${pageContext.request.contextPath}
 @Controller
 @RequestMapping("/advisor")
 public class AdvisorController {
 
+    // Instances of the Service Class to run the HQL queries
     private StudentService studentService;
     private MajorService majorService;
-    
+    private ProfessorService professorService;
+    private SectionService sectionService;
+
+    // Constructor Injection
     @Autowired
-    public AdvisorController(StudentService studentService, MajorService majorService){
+    public AdvisorController(StudentService studentService, MajorService majorService,
+                             ProfessorService professorService, SectionService sectionService){
         this.studentService = studentService;
         this.majorService = majorService;
+        this.professorService = professorService;
+        this.sectionService = sectionService;
     }
 
     @RequestMapping("/home")
@@ -91,8 +104,25 @@ public class AdvisorController {
         model.addAttribute("majors", majors);
         */
 
-        Major major = majorService.findById(1);
-        model.addAttribute("majors", major);
+        //Major major = majorService.findById(1);
+        //model.addAttribute("majors", major);
+
+        /*
+
+        // Joining works now!
+
+        Professor testProf = new Professor(0, "Mike");
+        professorService.saveProfessor(testProf);
+
+        Section testSection = new Section("CS 107");
+        testProf.add(testSection);
+        sectionService.addSection(testSection);
+
+        */
+
+        Professor tmpProf = professorService.findById(2);
+        System.out.println(tmpProf.getName());
+        System.out.println(tmpProf.getSections());
 
         return "test/test";
     }
