@@ -43,6 +43,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 	// this is needed for bcrypt hashing
 	private final PasswordEncoder pwEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+/*
 
 	// Bean used to create roles for spring security
 	@Bean
@@ -63,6 +64,7 @@ class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 		return new InMemoryUserDetailsManager(defaultAdmin, defaultTest);
 	}
+*/
 
 	// TODO: Fix xss. vulnerable if using /advisor/XSSEXAMPLE
 	// Configures roles on endpoints
