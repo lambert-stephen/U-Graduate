@@ -12,6 +12,7 @@ public interface StudentDAO {
     public void deleteById(int id);
     public List<Student> findByName(String name);
     public void deleteByName(String name);
+    public Student grantAuth(Student student);
 
 
 }

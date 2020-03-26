@@ -14,10 +14,11 @@ public class DefaultController {
     @RequestMapping("/loginSuccess")
     public String loginRoute(HttpServletRequest request){
         // if user is student, direct to student home, else
+
         if(request.isUserInRole("STUDENT")){
             return "student_mappings/studentHome";
         }
-        else if (request.isUserInRole("ADVISOR")){
+        else if (request.isUserInRole("ADMIN")){
             return "advisor_mappings/admin-homepage";
         }
         else {

@@ -35,10 +35,23 @@ public class StudentDAOFunctionality implements StudentDAO {
 
     @Override
     @Transactional
+    public Student grantAuth(Student s) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Student student =  currentSession.get(Student.class, s.getId());
+        // TODO: Finish this damn method.. grants auth to student
+        /*
+        Query query = currentSession.createQuery("delete from Student where id=:studentId");
+        query.setParameter("studentId", id);
+         */
+
+    }
+
+    @Override
+    @Transactional
     public void save(Student student){
         Session currentSession = entityManager.unwrap(Session.class);
-
         currentSession.saveOrUpdate(student);
+
     }
 
     @Override
