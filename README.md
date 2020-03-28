@@ -6,7 +6,7 @@ TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
 
 This is our deployed application.
 
-username: admin
+username: user
 password: 12345qwert
 
 login, click on the search for a student hyperlink, then just press submit to get a query of every single entry
@@ -46,7 +46,7 @@ We should at least have the following amount of toy data
 20 classes with class names, times and seat information
 2 admins
 
-Our app should be able to open to a login page where we can choose if we are a student or admin, We should be able to register and login as a Student, this information should be stored in our DB.All the student functionalities
+Our app should be able to open to a login page where we can choose if we are a student or user, We should be able to register and login as a Student, this information should be stored in our DB.All the student functionalities
 
 -Class Functionalities for Students should be done and their CRUD test suite should be written. -if a student registers, their name and credentials should be added to our DB.
 -student should be able to search for a class and return the proper query.
@@ -62,7 +62,7 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 Finish implementing what we did not get to do for checkpoint 2. 
 Also start making the front end more interactive. 
 
-Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an admin adds another student or another admin. 
+Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user. 
 
 ## Deliverables for final project
 

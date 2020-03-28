@@ -1,7 +1,5 @@
 package com.web_dev_494.uGraduate.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

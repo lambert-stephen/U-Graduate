@@ -23,6 +23,7 @@ public class SectionDAOFunctionality implements SectionDAO {
 
 	    @Override
 		 public void save(Section section) {
+
 	    	 Session currentSession = entityManager.unwrap(Session.class);
 	         currentSession.saveOrUpdate(section);
 		 }

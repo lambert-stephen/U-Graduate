@@ -14,17 +14,16 @@ public class Authorities implements GrantedAuthority {
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.DETACH, CascadeType.REFRESH})
-    @JoinColumn(name="admin")
-    private Admin admin;
+    @JoinColumn(name="user")
+    private User user;
     @Column(name = "authority")
     private String authority;
 
     public Authorities() {
     }
 
-    public Authorities(int id, Admin admin, String authority) {
+    public Authorities(int id, String authority) {
         this.id = id;
-        this.admin = admin;
         this.authority = authority;
     }
 
@@ -36,12 +35,12 @@ public class Authorities implements GrantedAuthority {
         this.id = id;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public User getUser() {
+        return user;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getAuthority() {

@@ -11,8 +11,8 @@ public interface StudentDAO {
     public Student findById(int id);
     public void deleteById(int id);
     public List<Student> findByName(String name);
+    public Student findByUsername(String username);
     public void deleteByName(String name);
-    public Student grantAuth(Student student);
 
 
 }

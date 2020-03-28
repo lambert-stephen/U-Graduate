@@ -1,9 +1,6 @@
 package com.web_dev_494.uGraduate.controller;
 
-import com.web_dev_494.uGraduate.entity.Major;
-import com.web_dev_494.uGraduate.entity.Professor;
-import com.web_dev_494.uGraduate.entity.Section;
-import com.web_dev_494.uGraduate.entity.Student;
+import com.web_dev_494.uGraduate.entity.*;
 import com.web_dev_494.uGraduate.service.MajorService;
 import com.web_dev_494.uGraduate.service.ProfessorService;
 import com.web_dev_494.uGraduate.service.SectionService;
@@ -107,24 +104,27 @@ public class AdvisorController {
         //Major major = majorService.findById(1);
         //model.addAttribute("majors", major);
 
-        /*
+
 
         // Joining works now!
 
+
+        /*
         Professor testProf = new Professor(0, "Mike");
-        professorService.saveProfessor(testProf);
+        professorService.save(testProf);
 
-        Section testSection = new Section("CS 107");
+        Section testSection = new Section("CS101", 0);
         testProf.add(testSection);
-        sectionService.addSection(testSection);
+        sectionService.save(testSection);
 
-        */
-/*
-
-        Professor tmpProf = professorService.findById(2);
+        Professor tmpProf = professorService.findById(1);
         System.out.println(tmpProf.getName());
         System.out.println(tmpProf.getSections());
-*/
+
+        */
+        Student student = new Student(0, "Fabian",
+                "Corpuz", "Computer Science", "fabski");
+        studentService.save(student);
 
         return "test/test";
     }

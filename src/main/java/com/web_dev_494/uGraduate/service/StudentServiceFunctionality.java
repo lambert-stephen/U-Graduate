@@ -48,6 +48,11 @@ public class StudentServiceFunctionality implements StudentService {
     }
 
     @Override
+    public Student findByUsername(String username) {
+        return studentDAO.findByUsername(username);
+    }
+
+    @Override
     public void deleteByName(String name) {
         studentDAO.deleteByName(name);
     }

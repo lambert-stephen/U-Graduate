@@ -1,5 +1,10 @@
 package com.web_dev_494.uGraduate.controller;
 
+import com.web_dev_494.uGraduate.entity.User;
+import com.web_dev_494.uGraduate.security.UserSecurity;
+import org.apache.jasper.security.SecurityUtil;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,8 +17,12 @@ public class DefaultController {
 
     // See UGraduateApplication for defaultsuccessurl
     @RequestMapping("/loginSuccess")
-    public String loginRoute(HttpServletRequest request){
+    public String loginRoute(HttpServletRequest request, @AuthenticationPrincipal User user){
         // if user is student, direct to student home, else
+
+        System.out.println("*********** " + user.toString());
+        System.out.println("--------------");
+        System.out.println("--------------");
 
         if(request.isUserInRole("STUDENT")){
             return "student_mappings/studentHome";

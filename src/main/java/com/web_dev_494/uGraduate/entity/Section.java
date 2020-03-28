@@ -11,7 +11,7 @@ public class Section {
 
 	 @Id
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(name = "crn")
+	 @Column(name = "crn_")
 	 private int CRN;
 
 	 @Column(name = "class_name")
@@ -19,10 +19,24 @@ public class Section {
 
 	 @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
                            CascadeType.DETACH, CascadeType.REFRESH})
-     @JoinColumn(name="professor_id")
+	 @JoinColumn(name="professor_id")
 	 private Professor professor;
 
-	 
+	 @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+			              CascadeType.DETACH, CascadeType.REFRESH})
+	 @JoinColumn(name = "major_id")
+	 private Major major;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
+			CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinTable(
+			name = "student_section",
+			joinColumns = @JoinColumn(name = "crn_"),
+			inverseJoinColumns = @JoinColumn(name = "student_id")
+	)
+	private List<Student> students;
+
+
 	 public Section(){
 
 	 }
@@ -53,6 +67,32 @@ public class Section {
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+	public Major getMajor() {
+		return major;
+	}
+
+	public void setMajor(Major major) {
+		this.major = major;
+	}
+
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	public void addStudent(Student student){
+	 	if(students == null){
+	 		students = new ArrayList<>();
+		}
+
+	 	students.add(student);
+
+
 	}
 
 	@Override

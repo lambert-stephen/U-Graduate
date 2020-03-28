@@ -1,11 +1,8 @@
 package com.web_dev_494.uGraduate.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="major")
@@ -17,19 +14,22 @@ public class Major {
     private int majorId;
 	  
     @Column(name = "major_name")
-    private String majorName;
+    private String name;
 
+    @OneToMany(mappedBy = "major",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                    CascadeType.DETACH, CascadeType.REFRESH})
+    private List<Section> sections;
 
     //constructors
-    public Major() {
-    }
+    public Major() {}
 
-    public Major(int majorId, String majorName){
-
+    public Major(int majorId, String name){
         this.majorId = majorId;
-        this.majorName = majorName;
-
+        this.name = name;
     }
+
+
 
     public void setMajorId(int majorId) {
         this.majorId = majorId;
@@ -39,24 +39,36 @@ public class Major {
         return majorId;
     }
 
-    public String getMajorName() {
-        return majorName;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String majorName) {
+        this.name = majorName;
+    }
 
-    public void setMajorName(String majorName) {
-        this.majorName = majorName;
+    public List<Section> getSections() {
+        return sections;
+    }
+
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+
+    public void add(Section section){
+        if(this.sections == null){
+            this.sections = new ArrayList<>();
+        }
+
+        this.sections.add(section);
+        section.setMajor(this);
     }
 
     @Override
     public String toString() {
         return "Major{" +
-            "majorId=" + majorId +
-            ", majorName='" + majorName + '\'' +
-            '}';
+                "majorId=" + majorId +
+                ", name='" + name + '\'' +
+                '}';
     }
-
-
-	    
-
 }
