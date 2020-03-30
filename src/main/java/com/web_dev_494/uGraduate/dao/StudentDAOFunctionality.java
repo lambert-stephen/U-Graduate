@@ -63,12 +63,13 @@ public class StudentDAOFunctionality implements StudentDAO {
             Authorities authorities = new Authorities(0, "ROLE_STUDENT");
             user.addAuthorities(authorities);
             currentSession.saveOrUpdate(authorities);
-            // TODO: Figure out the user -> student foreign key issue
+            student.setId(user.getId());
+            currentSession.save(student);
 
         }
-
-        currentSession.saveOrUpdate(student);
-
+        else {
+            currentSession.saveOrUpdate(student);
+        }
     }
 
     @Override

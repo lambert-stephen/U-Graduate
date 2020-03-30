@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 public class DefaultController {
 
     // See UGraduateApplication for defaultsuccessurl
-    @RequestMapping("/loginSuccess")
+    @RequestMapping(value = {"/loginSuccess", "/"})
     public String loginRoute(HttpServletRequest request, @AuthenticationPrincipal User user){
         // if user is student, direct to student home, else
 
