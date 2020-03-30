@@ -43,7 +43,8 @@ public class AdvisorController {
     public String searchStudent(Model model){
         return "advisor_mappings/search-student-page";
     }
-
+    
+    @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/addStudent")
     public String addStudent(Model model){
         Student student = new Student();
@@ -62,12 +63,13 @@ public class AdvisorController {
     }
 
     //---------------------------------------------------------------
-
+   // @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/students")
     public List<Student> findAll(){
         return studentService.findAll();
     }
-
+    
+    //@CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/studentById")
     public String getStudent(@RequestParam("studentId") int studentId, Model model){
 

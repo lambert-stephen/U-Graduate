@@ -35,6 +35,7 @@ public class StudentController {
 	//see what classes they are enrolled in
 	//see what classes they finished
 	//see what classes they have left
+	//register 
 	  
 	@RequestMapping("/home")
 	public String home(HttpServletRequest http){
