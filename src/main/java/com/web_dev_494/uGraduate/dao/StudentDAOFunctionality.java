@@ -51,19 +51,23 @@ public class StudentDAOFunctionality implements StudentDAO {
     public void save(Student student){
         Session currentSession = entityManager.unwrap(Session.class);
         if(student.getId() == 0){
-            currentSession.saveOrUpdate(new User(0, student.getUsername(), student.getUsername()));
+            currentSession.saveOrUpdate(new User(0, student.getUsername(), "password"));
 
             Query query = currentSession.createQuery("from User s where s.username =:username" );
             query.setParameter("username", student.getUsername());
 
             User user = (User) query.getResultList().get(0);
 
-
-
             Authorities authorities = new Authorities(0, "ROLE_STUDENT");
             user.addAuthorities(authorities);
             currentSession.saveOrUpdate(authorities);
             student.setId(user.getId());
+
+            String newUsername = student.getFirstName().charAt(0) + student.getLastName() + student.getId();
+            student.setUsername(newUsername);
+
+            user.setUsername(newUsername);
+
             currentSession.save(student);
 
         }

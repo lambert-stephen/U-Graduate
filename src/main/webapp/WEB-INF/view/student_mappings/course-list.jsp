@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Fabian
-  Date: 3/19/2020
-  Time: 7:27 AM
+  Date: 3/30/2020
+  Time: 1:46 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,8 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-Welcome, ${student.firstName}
-<br>
-<a href="${pageContext.request.contextPath}/student/courselist"> See courses needed </a> <br>
+You need to take a lot of courses
 </body>
 </html>

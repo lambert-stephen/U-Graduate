@@ -49,7 +49,8 @@ public class StudentController {
 	}
 	    
 	    
-	    
-
-
+	@RequestMapping("/courselist")
+	public String showCourses(){
+		return "student_mappings/course-list";
+	}
 }

@@ -55,6 +55,8 @@ public class AdvisorController {
     public String addStudent(@ModelAttribute("student") Student student){
 
         student.setId(0);
+        String newUsername = student.getFirstName().charAt(0) + student.getLastName() + student.getId();
+        student.setUsername(newUsername);
         studentService.save(student);
         return "advisor_mappings/add-results-page";
     }
@@ -130,12 +132,12 @@ public class AdvisorController {
     }
 
 
-    //@RequestMapping("/XSSExample")
+    @RequestMapping("/XSSExample")
     public String xss(){
         return "xss";
     }
 
-    //@RequestMapping("/XSSExample-next")
+    @RequestMapping("/XSSExample-next")
     public String xssNext(@RequestParam("inputValue") String input, Model model){
 
         model.addAttribute("input", input);
