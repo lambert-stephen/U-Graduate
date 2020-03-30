@@ -8,16 +8,4 @@ public class LoggoutController {
 
     // TODO: Send/read cookies for authentication
 
-    @RequestMapping("/")
-    public String homePage1(){
-        return "uGraduate";
-    }
-
-    @RequestMapping("/home")
-    public String homePage2(){
-        return "uGraduate";
-    }
-
-
-
 }

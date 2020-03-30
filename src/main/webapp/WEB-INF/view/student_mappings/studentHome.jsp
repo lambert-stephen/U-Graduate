@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-Welcome 
+Welcome, ${Student.name}
 </body>
 </html>
