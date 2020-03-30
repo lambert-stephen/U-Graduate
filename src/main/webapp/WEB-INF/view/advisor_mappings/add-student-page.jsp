@@ -6,8 +6,6 @@
 </head>
 <body>
 
-${class.professor_id}
-
 add student page
 
 <form:form action= "${pageContext.request.contextPath}/advisor/addedStudent" modelAttribute= "student" method="post">
