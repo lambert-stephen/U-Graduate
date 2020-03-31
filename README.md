@@ -100,29 +100,13 @@ Then go to localhost:8080/logout. logout.
 Login with that credentials you got from the first username you created. Click on the first hyperlink. (Second one
 is broken) and it will make a get request of all the courses associated with that user.   
 
-## Deliverables for checkpoint 4
-
-
-- Step 1: Log in to your aws account and go to the dashboard that has all the services. click on RDS.
-Under resources there is a hyperlink that says DB Instances. Click on that and click on create database on the next
-page. Select Easy create. Select Configuration MySQL. Set DB instance size to Production.. JK set it to free tier.
-DB Instance Identifier as default. Master username to whatever you want. password to whatever. Start the database.
-
-- Step 2: Go to the dashboard of the database you just made. There is a summary section but right under that,
-you will see connectivity and security. Look at endpoint and port. The link under "Endpoint" is how to connect.
-Save this. the port is 3306 by default.
-
-
-Finish implementing what we did not get to do for checkpoint 2.
-Also start making the front end more interactive.
-
-Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user.
-
-English test descriptions for checkpoint 4 are in the test folder in the java file UGraduateApplicationTests
-
 tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
 
 tests will be able to check the user secrurity authentication and again for correct page mappings for each user
+
+
+## Deliverables for checkpoint 4
+
 
 ## Deliverables for final project
 
