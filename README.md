@@ -4,7 +4,8 @@
 To run our application, go to the following link:
 TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
 
--To run our test cases, Run the UGraduateApplicationTests, all test pass as well as the github action tests
+To run our test cases, Run the UGraduateApplicationTests, all test pass as well as the github action tests
+
 This is our deployed application.
 
 ## Description
