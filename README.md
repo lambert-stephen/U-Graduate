@@ -14,7 +14,7 @@ on the AWS database
 
 add student was getting implemented but there wasn't a ton of time to do so, so it is broken. 
 
-To run our test cases, Run the UGraduateApplicationTests in IntelliJ or Eclipse, all current test will pass, and there is still more to be added.
+To run our test cases, Run the UGraduateApplicationTests, all test pass as well as the github action tests
 ## Description
 
 Overview: uGraduate is going to be an application that centralizes the current
@@ -64,6 +64,10 @@ Finish implementing what we did not get to do for checkpoint 2.
 Also start making the front end more interactive. 
 
 Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an admin adds another student or another admin. 
+
+English test descriptions for checkpoint 4 are in the test folder in the java file UGraduateApplicationTests
+-tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
+-tests will be able to check the user secrurity authentication and again for correct page mappings for each user
 
 ## Deliverables for final project
 
