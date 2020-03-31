@@ -48,6 +48,16 @@ public class SectionDAOFunctionality implements SectionDAO {
 	}
 
 	@Override
+	public List<Section> findByMajor(int name) {
+		Session session = entityManager.unwrap(Session.class);
+
+		Query query = session.createQuery("from Section s where s.major =:name" );
+		query.setParameter("name", name);
+
+		return query.getResultList();
+	}
+
+	@Override
 	public void deleteByName(String name) {
 
 	}

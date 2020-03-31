@@ -15,8 +15,8 @@ Welcome to the advisor homepage <br>
 select an option <br>
 
 <a href="${pageContext.request.contextPath}/advisor/addStudent"> Add a Student </a> <br>
-<a href="${pageContext.request.contextPath}/advisor/searchStudent"> Search for a Student </a>
-
+<a href="${pageContext.request.contextPath}/advisor/searchStudent"> Search for a Student </a> <br>
+<a href="${pageContext.request.contextPath}/advisor/addSection"> Add a Section </a> <br>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Fabian
   Date: 3/30/2020
-  Time: 1:46 PM
+  Time: 5:05 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,9 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-${student.firstName} : These are all the CS courses that you need:
-<br>
-${sections}
-
+${section}
 </body>
 </html>

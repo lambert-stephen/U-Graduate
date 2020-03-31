@@ -13,6 +13,12 @@
     <title>Title</title>
 </head>
 <body>
-    asdfasdfasdfasdfasdfasdfasdf
+    You added ${student.firstName}... The username is ${student.username} and the default password was set to "password"
+<br>
+    The selected major was ${student.major}
+<br>
+You can now login with these credentials.
+
+
 </body>
 </html>

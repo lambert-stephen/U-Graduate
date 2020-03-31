@@ -12,7 +12,17 @@ add student page
 
     Enter Student's first name <form:input path="firstName"/>
     Enter Student's last name  <form:input path="lastName"/>
-    Enter Student's major      <form:input path="major"/>
+
+    Pick Student's major
+    <form:select path="major">
+        <form:option value="Computer Science" label="Computer Science"   />
+        <form:option value="Psychology" label="Psychology"   />
+        <form:option value="Industrial Design" label="Industrial Design"   />
+        <form:option value="Business" label="Business"   />
+        <form:option value="Economics" label="Economics"   />
+        <form:option value="Undeclared" label="Undeclared"   />
+    </form:select>
+
     <input type="submit" value="Submit">
 
 </form:form>

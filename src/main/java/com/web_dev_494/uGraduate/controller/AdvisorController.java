@@ -44,7 +44,7 @@ public class AdvisorController {
         return "advisor_mappings/search-student-page";
     }
     
-    @CrossOrigin(origins = "http://localhost:3000")
+    //@CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/addStudent")
     public String addStudent(Model model){
         Student student = new Student();
@@ -53,12 +53,13 @@ public class AdvisorController {
     }
 
     @PostMapping("/addedStudent")
-    public String addStudent(@ModelAttribute("student") Student student){
+    public String addStudent(@ModelAttribute("student") Student student, Model model){
 
         student.setId(0);
         String newUsername = student.getFirstName().charAt(0) + student.getLastName() + student.getId();
         student.setUsername(newUsername);
         studentService.save(student);
+        model.addAttribute("student", student);
         return "advisor_mappings/add-results-page";
     }
 
@@ -145,5 +146,38 @@ public class AdvisorController {
         model.addAttribute("input", input);
         return "xss-next";
     }
+
+    @RequestMapping("/addSection")
+    public String addSection(Model model){
+
+        Section section = new Section();
+        model.addAttribute(section);
+        return "advisor_mappings/add-section";
+    }
+
+
+    @PostMapping("/addedSection")
+    public String addedSection(@ModelAttribute("section") Section section,
+                               Model model,
+                               @RequestParam("professorName") String professorName){
+
+
+        if(professorService.findByName(professorName).size() == 0){
+            section.setProfessor(null);
+        }
+        else {
+            Professor professor = professorService.findByName(professorName).get(0);
+            section.setProfessor(professor);
+        }
+
+
+        sectionService.save(section);
+        model.addAttribute(section);
+
+        return "advisor_mappings/add-section-results";
+    }
+
+
+    
 
 }

@@ -41,4 +41,9 @@ public class SectionServiceFunctionality implements SectionService {
 	public void deleteByName(String name) {
 		sectionDAO.deleteByName(name);
 	}
+
+	@Override
+	public List<Section> findByMajor(int name) {
+		return sectionDAO.findByMajor(name);
+	}
 }

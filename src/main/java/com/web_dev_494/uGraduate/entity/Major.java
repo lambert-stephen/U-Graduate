@@ -61,7 +61,7 @@ public class Major {
         }
 
         this.sections.add(section);
-        section.setMajor(this);
+        //section.setMajor(this);
     }
 
     @Override

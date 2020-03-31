@@ -22,10 +22,11 @@ public class Section {
 	 @JoinColumn(name="professor_id")
 	 private Professor professor;
 
-	 @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-			              CascadeType.DETACH, CascadeType.REFRESH})
-	 @JoinColumn(name = "major_id")
-	 private Major major;
+	 //@ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+	 //		              CascadeType.DETACH, CascadeType.REFRESH})
+	 //@JoinColumn(name = "major_id")
+	@Column(name = "major_id")
+	 private int major;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
 			CascadeType.DETACH, CascadeType.REFRESH})
@@ -69,11 +70,11 @@ public class Section {
 		this.className = className;
 	}
 
-	public Major getMajor() {
+	public int getMajor() {
 		return major;
 	}
 
-	public void setMajor(Major major) {
+	public void setMajor(int major) {
 		this.major = major;
 	}
 

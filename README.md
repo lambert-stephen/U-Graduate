@@ -6,14 +6,6 @@ TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
 
 This is our deployed application.
 
-username: user
-password: 12345qwert
-
-login, click on the search for a student hyperlink, then just press submit to get a query of every single entry
-on the AWS database
-
-add student was getting implemented but there wasn't a ton of time to do so, so it is broken. 
-
 ## Description
 
 Overview: uGraduate is going to be an application that centralizes the current
@@ -56,6 +48,12 @@ Our app should be able to open to a login page where we can choose if we are a s
 The functionalities listed above under Students will be what our tests are checking for. Basic CRUD tests should be written for the students' class.
 
 Fabian - mess around with Spring Security and configure things as needed. Still unsure of how to fully use Spring security but will have more detailed Spring security actions by checkpoint 4. Work on IAM configurations and learn how to do that. Will try to get those configurations up and running.
+
+## Deliverables for checkpoint 3
+Deployment Notes
+- Security progress: Configured spring security to only accept roles signified in the SecurityConfig.java class. Only 
+people with the role "ADMIN" and "STUDENT" can log in. Spring security puts it all on lockdown. Our database has 
+a schema 
 
 ## Deliverables for checkpoint 4
 

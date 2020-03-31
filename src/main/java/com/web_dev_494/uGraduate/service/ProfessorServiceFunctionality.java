@@ -8,6 +8,7 @@ import com.web_dev_494.uGraduate.dao.SectionDAO;
 import com.web_dev_494.uGraduate.entity.Professor;
 
 import java.security.PublicKey;
+import java.util.List;
 
 @Repository
 public class ProfessorServiceFunctionality implements ProfessorService {
@@ -23,6 +24,11 @@ public class ProfessorServiceFunctionality implements ProfessorService {
 	public void save(Professor p) {
 		professorDAO.save(p);
 		
+	}
+
+	@Override
+	public List<Professor> findByName(String name) {
+		return professorDAO.findByName(name);
 	}
 
 	@Override

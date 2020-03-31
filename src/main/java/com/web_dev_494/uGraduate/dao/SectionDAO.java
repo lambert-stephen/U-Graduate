@@ -16,6 +16,7 @@ public interface SectionDAO {
 	public void deleteByCRN(int CRN);
 	public List<Section> findByName(String name);
 	public void deleteByName(String name);
+	public List<Section> findByMajor(int name);
 
 
 }

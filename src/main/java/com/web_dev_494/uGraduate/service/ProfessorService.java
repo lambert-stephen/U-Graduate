@@ -10,6 +10,7 @@ public interface ProfessorService {
 	//update
 	public void save(Professor p);
 	public Professor findById(int id);
+	public List<Professor> findByName(String name);
 
 /*
 
