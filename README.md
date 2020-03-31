@@ -2,7 +2,7 @@
 
 **NOTE**
 To run our application, go to the following link:
-TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
+http://ugraduate-env-main.cvxskqjjyk.us-east-1.elasticbeanstalk.com/
 
 This is our deployed application.
 
@@ -137,9 +137,4 @@ Jon - An interactive Class tree map that displays classes completed, in progress
 
 # Installation
 
-AWS Deployment Instructions:
-- Intall Intellij or Eclipse
-- Import this project folder as a MAVEN project
-- Run mvn clean package. This will create a directory called target and add folders and files inside. Inside the file, there is a .war file (not the .war.original). This is the file that will be used to deploy on the server
-- On AWS, create a new instance of Elastic Beanstalk and upload the .war file from the project directory
-- Good to go
+See checkpoint 3 for installation/deployment
