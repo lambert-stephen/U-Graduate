@@ -1,45 +1,120 @@
-# {{TEAMNAME}} Final Project
+# We Push to Master Final Project
 
-TODO: Fill out this file with the following information
+**NOTE** 
+To run our application, go to the following link:
+TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
 
+This is our deployed application.
 
 ## Description
 
-TODO: An English language description of what your application does, intended for a developer
-audience. Pretend this is the real `README.md` for your app that will show up on GitHub: what do you
-want people to know about it? What does it do? Why should they use it/check it out/hack on it? This
-should be approximately two paragraphs. Take a look at the description of your favorite software
-repository for inspiration.
+Overview: uGraduate is going to be an application that centralizes the current
+in place systems students use to register. Students currently use 3 different
+applications/systems to register for a semester. uAchieve, Register XE,
+and uAdvise. All of the systems are not consistent and they are not centered
+around the user experience. uGraduate will allow students to register, drop
+classes, visually see all required courses through graduation in a tree like
+fashion, and see available resources. All access control will be done through
+administrators that have the ability to not only drop/add students to classes,
+but they will indicate whether or not a student passes or fails a class and
+updates the GUI accordingly.
+
 
 ## Authors
 
-TODO: List group members, each group member must EITHER be marked "web programming novice" OR list a
-specialization - you don't need to implement it all yourself, but you do need to be in charge of
-getting it described and added. Your expertise self-evaluation is completely on the honor system.
-
-For instance:
-
 | Member | Web dev level | Specialization |
 | --- | --- | --- |
-| Ned the Novice | web programming novice | |
-| Isaac the Intermediate | Took IT 202, built something in php once | I want to learn about website performance so I will be adding performance tests and keeping a performance log. |
-| Edith the Expert | Interned as a web dev for the last 2 semesters | I will containerize the app and configure it to run within Kubernetes, integrate it with a CI/CD platform so that the deployed version is updated once all tests pass, and I will run a load test with several synthetic long-session users to demonstrate rolling updates to the code. |
-| Jonathan Vega | Took IT202, flew through most content though.. | Bootstrap and JQuery |
+| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | Security. I want to learn how to properly utilize security in a non-trivial way. I will customize the IAM on AWS and use credential-less storing so we are not storing keys on the repo. 2f authentication. Since there is no incredibly obvious security solution for this registration system, I will designate all security aspects of the application as my specialization |
+| Hanna Thayyil | Novice | --- |
+| Jonathan Vega the Intermediate | Took IT202, flew through most content though.. | Front-end. Bootstrap, JQuery, probably React |
+| Stephen Lambert | Novice | --- |
 
 ## Deliverables for checkpoint 2
 
-Outline in English what the deliverables will be for checkpoint 2. Provide a concise list that is
-amenable to being translated into specific tests. Pro-tip: if you write that concise list here, you
-should be able to easily translate it into a collection of test suites.
+Have Hibernate and MySQL set up with a good amount of toy data we can use for querying.
+We should at least have the following amount of toy data
+50 students with all of their credentials
+2 different colleges with 2 majors per college and 10 classes for each major
+20 classes with class names, times and seat information
+2 admins
 
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+Our app should be able to open to a login page where we can choose if we are a student or user, We should be able to register and login as a Student, this information should be stored in our DB.All the student functionalities
+
+-Class Functionalities for Students should be done and their CRUD test suite should be written. -if a student registers, their name and credentials should be added to our DB.
+-student should be able to search for a class and return the proper query.
+-students should be able to query unfinished classes and results should be displayed to user
+-students should be able to query classes they have already completed
+-if a student unregisters, their name and credentials should be removed from our DB
+The functionalities listed above under Students will be what our tests are checking for. Basic CRUD tests should be written for the students' class.
+
+Fabian - mess around with Spring Security and configure things as needed. Still unsure of how to fully use Spring security but will have more detailed Spring security actions by checkpoint 4. Work on IAM configurations and learn how to do that. Will try to get those configurations up and running.
+
+## Deliverables for checkpoint 3
+Deployment Notes
+- Security progress: Configured spring security to only accept roles signified in the SecurityConfig.java class. Only 
+people with the role "ADMIN" and "STUDENT" can log in. Spring security puts it all on lockdown. Our database has 
+a schema that use a master record of all users. There is a one to many join between users and authorities. Authorities
+has a value "ROLE_USERROLE" and it can be "STUDENT" or "ADMIN". Redirects are then sent according to roles. 
+
+**NOTE: I spent too much time figuring out the workings of Spring Security and how to properly configure it. I even 
+pushed all throughout spring break. I was not able to get .env and secrets to work so at the moment I have them 
+saved in the code. Will be changing that for next deployment.
+
+
+- How to Deploy: 
+
+- Step 1: Download our directory and open up src\main\resources\applications.properties. set spring.datasource.url to
+
+jdbc:mysql://test-database.cmuqwxmahqss.us-east-1.rds.amazonaws.com/test?useSSL=false&serverTimezone=UTC
+
+There is a username and password right under that. Change that to 
+username: admin
+password: 12345678
+Run a "mvn clean package" on the cmd line and this should create a file under the target directory. 
+(in intellij it created it under master/target). This file was SNAP_SHOT.war. Don't user the .war.original. 
+
+- Step 2: Log in to your aws account and go to the dashboard that has all the services. Click on Elastic 
+Beanstalk. You are going to create a new environment, click on new environment button and leave web server environment 
+default. go to the next page. Add an application name, environment name (to whatever you want), choose platform 
+as TOMCAT. The next section will then have you upload your own code (under the same page of application code). local 
+and upload the war file you recently created. It will upload for about a few minutes. And go on to the next page to 
+deploy. This part will take a while (took me 10min). 
+
+NOTES OF THE APP. 
+
+Login to the app first by using username: admin | password: admin. Here you can add students, search them and add
+sections. Adding a student will create a user and allow login access. Adding a section will link students with
+that required major. 
+
+Try this. 
+
+Add new student. Name: Whatever you want. last name: whatever you want. Major to whatever you want. 
+Click submit. Save the username and password it gives. Now go to add section. Add a section. Enter 
+a class name. Leave professor blank (will implement later) and pick the course that corresponds to the major
+you selected earlier. submit. 
+
+Then go to localhost:8080/logout. logout. 
+
+Login with that credentials you got from the first username you created. Click on the first hyperlink. (Second one
+is broken) and it will make a get request of all the courses associated with that user.   
 
 ## Deliverables for checkpoint 4
 
-Outline in English what the deliverables will be for checkpoint 4. Reminder that this is not *due*
-until checkpoint 2, but failing to plan is planning to fail.
 
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+- Step 1: Log in to your aws account and go to the dashboard that has all the services. click on RDS. 
+Under resources there is a hyperlink that says DB Instances. Click on that and click on create database on the next
+page. Select Easy create. Select Configuration MySQL. Set DB instance size to Production.. JK set it to free tier. 
+DB Instance Identifier as default. Master username to whatever you want. password to whatever. Start the database. 
+
+- Step 2: Go to the dashboard of the database you just made. There is a summary section but right under that, 
+you will see connectivity and security. Look at endpoint and port. The link under "Endpoint" is how to connect. 
+Save this. the port is 3306 by default. 
+
+
+Finish implementing what we did not get to do for checkpoint 2. 
+Also start making the front end more interactive. 
+
+Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user. 
 
 ## Deliverables for final project
 
@@ -52,10 +127,15 @@ For each specialization, you must list specific checkpoints that are relevant to
 
 ## Specialization deliverables
 
-For each student/team adding a specialization, name that specialization and describe what
-functionality you will be adding.
+Fabian - Secure management of the registration system. IAM customization for Admin roles only. String access control. 2F auth for admins. Extensive logging. Credential-less storing, and other related security vulnerabilities within the scope of the registration system
+
+Jon - An interactive Class tree map that displays classes completed, in progress, and finished. Will make a very user experience centered design that focuses on user recognition (rather than recall) and really adhere to the Nielson 10 design heuristics
 
 # Installation
 
-By the time you get to the end of the final project, this section should have a full set of
-instructions for how to spin up your app.
+AWS Deployment Instructions:
+- Intall Intellij or Eclipse
+- Import this project folder as a MAVEN project
+- Run mvn clean package. This will create a directory called target and add folders and files inside. Inside the file, there is a .war file (not the .war.original). This is the file that will be used to deploy on the server
+- On AWS, create a new instance of Elastic Beanstalk and upload the .war file from the project directory
+- Good to go
