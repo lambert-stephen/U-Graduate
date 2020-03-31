@@ -120,9 +120,9 @@ Fabian - establish access control for CRUD operations. For example, properly add
 
 English test descriptions for checkpoint 4 are in the test folder in the java file UGraduateApplicationTests
 
--tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
+tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
 
--tests will be able to check the user secrurity authentication and again for correct page mappings for each user
+tests will be able to check the user secrurity authentication and again for correct page mappings for each user
 
 ## Deliverables for final project
 
