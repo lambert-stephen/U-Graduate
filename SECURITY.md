@@ -34,7 +34,7 @@ WAPS 10 to prevent:
   - With the exception of the Spring configuration file, we will not be parsing
   or accepting xml in any form
 5: Broken Access control
-  - Ensure a multi step process to register an admin. Admin actions will be
+  - Ensure a multi step process to register an user. Admin actions will be
   constantly logged and monitored. Mainly to find erroneous/strange behavior.
   But also. Trust but verify.
 6: Security Misconfiguration
@@ -43,7 +43,7 @@ WAPS 10 to prevent:
   ensure there is no mistaken fall through
 7: XSS
   - Users will not be posting code that will be readable to other students or
-  admin. Admin can, and text will need to be sanitized
+  user. Admin can, and text will need to be sanitized
 8: Insecure Deserialization
   - N/A
 9: Using Components with unsecure
