@@ -4,6 +4,8 @@
 To run our application, go to the following link:
 http://ugraduate-env-main.cvxskqjjyk.us-east-1.elasticbeanstalk.com/
 
+To run our test cases, Run the UGraduateApplicationTests, all test pass as well as the github action tests
+
 This is our deployed application.
 
 ## Description
@@ -117,8 +119,10 @@ Also start making the front end more interactive.
 Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user.
 
 English test descriptions for checkpoint 4 are in the test folder in the java file UGraduateApplicationTests
--tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
--tests will be able to check the user secrurity authentication and again for correct page mappings for each user
+
+tests will be able to check for authentication and that the jsp page mappings are in the correct order for all of the controllers
+
+tests will be able to check the user secrurity authentication and again for correct page mappings for each user
 
 ## Deliverables for final project
 
