@@ -76,7 +76,7 @@ function (_React$Component) {
         "aria-labelledby": "navbarDropdown"
       }, React.createElement("a", {
         className: "dropdown-item",
-        href: "${pageContext.request.contextPath}/advisor/addStudent"
+        href: contextMapping + "/advisor/addStudent"
       }, "Add Student"), React.createElement("a", {
         className: "dropdown-item",
         href: "/"
@@ -126,7 +126,7 @@ function (_React$Component) {
         "aria-labelledby": "navbarDropdown"
       }, React.createElement("a", {
         className: "dropdown-item",
-        href: "${pageContext.request.contextPath}/advisor/searchStudent"
+        href: contextMapping + "/advisor/searchStudent"
       }, "Search Student"), React.createElement("a", {
         className: "dropdown-item",
         href: "/"

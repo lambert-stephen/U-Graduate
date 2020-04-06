@@ -24,6 +24,9 @@
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		
+		<script type="text/javascript">
+			var contextMapping = "${pageContext.request.contextPath}";
+		</script>
 	<!-- React Components -->
 		<script src="components/nav.js"></script> <!-- Navbar -->
 	</body>
@@ -35,5 +38,15 @@
 	<% String username = request.getParameter("username"); %>
 	<% out.println(username); %>
 
-
  -->
+ 
+ <!-- Notes: ${pageContext.request.contextPath}/advisor/searchStudent
+
+* use Babel below to convert the next-gen JavaScript to browser-compatible JavaScript
+  https://babeljs.io/repl
+  
+* You shouldn't use href="#" in Babel so use href="/".
+  BUT this causes the root index page to sometimes load, breaking links
+  Bottom line, fix all links
+ 
+  -->
