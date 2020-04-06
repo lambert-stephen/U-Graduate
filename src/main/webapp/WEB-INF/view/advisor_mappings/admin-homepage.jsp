@@ -26,7 +26,7 @@
 	<a href="${pageContext.request.contextPath}/advisor/addStudent"> Add a Student </a> <br>
 	<a href="${pageContext.request.contextPath}/advisor/searchStudent"> Search for a Student </a>
 
-	<img src="../reactComponents/ape.png">
+	<img src="components/ape.png">
 
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
