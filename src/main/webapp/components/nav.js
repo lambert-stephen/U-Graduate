@@ -38,8 +38,8 @@ function (_React$Component) {
         className: "navbar navbar-expand-lg navbar-dark bg-dark"
       }, React.createElement("a", {
         className: "navbar-brand",
-        href: "/"
-      }, "Advisor Homepage"), React.createElement("button", {
+        href: "#"
+      }, "Advisor"), React.createElement("button", {
         className: "navbar-toggler",
         type: "button",
         "data-toggle": "collapse",
@@ -58,14 +58,14 @@ function (_React$Component) {
         className: "nav-item active"
       }, React.createElement("a", {
         className: "nav-link",
-        href: "/"
+        href: "#"
       }, "Home ", React.createElement("span", {
         className: "sr-only"
       }, "(current)"))), React.createElement("li", {
         className: "nav-item dropdown"
       }, React.createElement("a", {
         className: "nav-link dropdown-toggle",
-        href: "/",
+        href: "#",
         id: "navbarDropdown",
         role: "button",
         "data-toggle": "dropdown",
@@ -79,12 +79,12 @@ function (_React$Component) {
         href: contextMapping + "/advisor/addStudent"
       }, "Add Student"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Remove Student"))), React.createElement("li", {
         className: "nav-item dropdown"
       }, React.createElement("a", {
         className: "nav-link dropdown-toggle",
-        href: "/",
+        href: "#",
         id: "navbarDropdown",
         role: "button",
         "data-toggle": "dropdown",
@@ -95,27 +95,27 @@ function (_React$Component) {
         "aria-labelledby": "navbarDropdown"
       }, React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Add Major"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Add Section"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Add Professor"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Remove Major"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Remove Section"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Remove Professor"))), React.createElement("li", {
         className: "nav-item dropdown"
       }, React.createElement("a", {
         className: "nav-link dropdown-toggle",
-        href: "/",
+        href: "#",
         id: "navbarDropdown",
         role: "button",
         "data-toggle": "dropdown",
@@ -129,18 +129,18 @@ function (_React$Component) {
         href: contextMapping + "/advisor/searchStudent"
       }, "Search Student"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Search Major"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Search Section"), React.createElement("a", {
         className: "dropdown-item",
-        href: "/"
+        href: "#"
       }, "Search Professor"))), React.createElement("li", {
         className: "nav-item"
       }, React.createElement("a", {
         className: "nav-link",
-        href: "/"
+        href: "#"
       }, "Logout")))));
     }
   }]);

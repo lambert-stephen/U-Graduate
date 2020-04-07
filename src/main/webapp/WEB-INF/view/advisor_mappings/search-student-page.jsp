@@ -11,13 +11,22 @@
 <html>
 
 <head>
-    <title>Title</title>
+    <title>Search Student</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
 </head>
 <body>
 
+<div id="nav"></div>
 
-<a href="${pageContext.request.contextPath}/advisor/home"> Back </a>
-
+<%-- <a href="${pageContext.request.contextPath}/advisor/home"> Back </a>
+ --%>
+ 
 <%--
 <form action="${pageContext.request.contextPath}/api/students" method="get">
 
@@ -32,19 +41,37 @@
 ${pageContext.request.contextPath}/api/students/{studentId}
 --%>
 
+		<div class="container">
+		  <br />
+		  <h2 class="text-center">Search For Student</h2>
+
 <form:form action="${pageContext.request.contextPath}/advisor/studentById" method="get">
-    <label>
-        <input type="text" placeholder="Search by student id" name="studentId">
-        <input type="submit" value="Submit">
-    </label>
+    
+    	<p>Enter Student's Identification Number</p>
+        <input type="text" placeholder="Search Using Student ID" name="studentId" class="form-control">
+        <br/>
+        <input type="submit" value="Submit" class="btn btn-primary">
 </form:form>   <br>
 
 <form:form action="${pageContext.request.contextPath}/advisor/studentByName" method="get">
-    <label>
-        <input type="text" placeholder="Search by student name" name="studentName">
-        <input type="submit" value="Submit">
-    </label>
+    
+    	<p>Enter Student's Name</p>
+        <input type="text" placeholder="Search By A Student's Name" name="studentName" class="form-control">
+        <br/>
+        <input type="submit" value="Submit" class="btn btn-primary">
 </form:form>
+</div>
 
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+			var contextMapping = "${pageContext.request.contextPath}";
+		</script>
+	<!-- React Components -->
+		<script src="../components/nav.js"></script> <!-- Navbar -->
 </body>
 </html>

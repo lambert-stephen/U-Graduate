@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
-    	<title>Advisor Homepage</title>
+    	<title>Add Student</title>
     	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -44,12 +44,6 @@
     <input type="submit" value="Submit" class="btn btn-primary">
 </form:form>
 </div>
-	
-
-	
-		<script type="text/javascript">
-			var contextMapping = "${pageContext.request.contextPath}";
-		</script>
 		
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -61,7 +55,6 @@
 		</script>
 	<!-- React Components -->
 		<script src="../components/nav.js"></script> <!-- Navbar -->
-		<script src="../components/form.js"></script>
  	</body>
 	
 </html>
