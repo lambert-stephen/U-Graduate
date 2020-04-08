@@ -16,7 +16,7 @@
 	<body>
 	<p>Welcome to the advisor homepage</p>
 	<p>select an option</p> <br>
-	
+
 	<div id="app"></div>
 
 	<a href="${pageContext.request.contextPath}/advisor/addStudent"> Add a Student </a> <br>
@@ -24,7 +24,7 @@
 
 
 	</body>
-	
+
 	<script type="text/babel">
 		class App extends React.Component {
 			render() {
@@ -38,5 +38,5 @@
 
 		ReactDOM.render(<App />, document.getElementById('app'));
 	</script>
-	
+
 </html>

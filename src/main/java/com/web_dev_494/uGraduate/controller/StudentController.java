@@ -82,6 +82,19 @@ public class StudentController {
 		model.addAttribute("sections", sections);
 		return "student_mappings/course-list";
 	}
+	
+	
+	//TODO: this currently shows courses needed-- how to show completed courses?? 
+	@RequestMapping("/coursesCompleted")
+	public String showCoursesCompleted(Model model, @AuthenticationPrincipal User user){
+
+		student = studentService.findByUsername(user.getUsername());
+		model.addAttribute("student", student);
+
+		List<Section> sections = sectionService.findByMajor(convertMajor(student.getMajor()));
+		model.addAttribute("sections", sections);
+		return "student_mappings/courses-completed";
+	}
 
 	@RequestMapping("/addSection")
 	public String addSection(Model model, @AuthenticationPrincipal User user){
