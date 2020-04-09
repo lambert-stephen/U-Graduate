@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,8 +58,8 @@ public class AdvisorController {
     public String addStudent(@ModelAttribute("student") Student student, Model model){
 
         student.setId(0);
-        String newUsername = student.getFirstName().charAt(0) + student.getLastName() + student.getId();
-        student.setUsername(newUsername);
+        // Logic for the student username saving is in studentDAOFunctionality
+        System.out.println("Id is: " + student.getId());
         studentService.save(student);
         model.addAttribute("student", student);
         return "advisor_mappings/add-results-page";
@@ -66,8 +68,9 @@ public class AdvisorController {
     //---------------------------------------------------------------
    // @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/students")
-    public List<Student> findAll(){
-        return studentService.findAll();
+    public String findAll(Model model){
+        model.addAttribute("students", studentService.findAll());
+        return "testAll";
     }
     
     //@CrossOrigin(origins = "http://localhost:3000")
@@ -127,10 +130,9 @@ public class AdvisorController {
         System.out.println(tmpProf.getSections());
 
         */
-        Student student = new Student(0, "Fabian",
-                "Corpuz", "Computer Science", "fabski");
-        studentService.save(student);
-
+        Professor professor = new Professor(0, "Charles Frisbie");
+        professorService.save(professor);
+        model.addAttribute("professor", professor);
         return "test/test";
     }
 
@@ -152,9 +154,9 @@ public class AdvisorController {
 
         Section section = new Section();
         model.addAttribute(section);
+        model.addAttribute(professorService.findAll());
         return "advisor_mappings/add-section";
     }
-
 
     @PostMapping("/addedSection")
     public String addedSection(@ModelAttribute("section") Section section,
@@ -177,6 +179,24 @@ public class AdvisorController {
         return "advisor_mappings/add-section-results";
     }
 
+    public String addProf(Model model){
+
+        Professor professor = new Professor();
+        model.addAttribute("professor",professor);
+        return "advisor_mappings/add-professor";
+
+    }
+
+    @PostMapping("/addedProfessor")
+    public String addedSection(@ModelAttribute("professor") Professor professor,
+                               Model model){
+
+        professor.setProfessorId(0);
+        String newUsername = professor.getName() + professor.getProfessorId();
+        professorService.save(professor);
+        model.addAttribute("professor", professor);
+        return "advisor_mappings/add-professor-results-page";
+    }
 
     
 

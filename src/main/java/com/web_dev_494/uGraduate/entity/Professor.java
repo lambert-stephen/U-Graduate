@@ -63,4 +63,12 @@ public class Professor {
 	 	section.setProfessor(this);
 	}
 
+	@Override
+	public String toString() {
+		return "Professor{" +
+				"professorId=" + professorId +
+				", name='" + name + '\'' +
+				", sections=" + sections +
+				'}';
+	}
 }

@@ -27,6 +27,12 @@ public class ProfessorServiceFunctionality implements ProfessorService {
 	}
 
 	@Override
+	public List<Professor> findAll() {
+		return professorDAO.findAll();
+	}
+
+
+	@Override
 	public List<Professor> findByName(String name) {
 		return professorDAO.findByName(name);
 	}

@@ -9,6 +9,7 @@ public interface ProfessorDAO {
 	
 	//update
 	public void save(Professor p);
+	List<Professor> findAll();
 	public Professor findById(int id);
 	public void deleteById(int id);
 	public List<Professor> findByName(String name);
