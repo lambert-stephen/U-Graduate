@@ -17,6 +17,10 @@ select an option <br>
 <a href="${pageContext.request.contextPath}/advisor/addStudent"> Add a Student </a> <br>
 <a href="${pageContext.request.contextPath}/advisor/searchStudent"> Search for a Student </a> <br>
 <a href="${pageContext.request.contextPath}/advisor/addSection"> Add a Section </a> <br>
+<a href="${pageContext.request.contextPath}/advisor/addProfessor"> Add a Professor </a> <br>
+
+<a href="${pageContext.request.contextPath}/advisor/attachProfessor"> Attach Professor to Section </a> <br>
+
 
 </body>
 </html>

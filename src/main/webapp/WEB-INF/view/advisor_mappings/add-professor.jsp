@@ -13,13 +13,9 @@
 </head>
 <body>
 
-<form:form action= "${pageContext.request.contextPath}/advisor/addedSection" modelAttribute= "professor" method="post">
+<form:form action= "${pageContext.request.contextPath}/advisor/addedProfessor" modelAttribute= "professor" method="post">
 
-
-    Enter the professor's first name  <form:input path="firstname"/> <br>
-    <label>
-        Enter the professor's last name     <form:input path="lastname"/>
-    </label> <br>
+    Enter the professor's full name  <form:input path="name"/> <br>
 
     <input type="submit" value="Submit">
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,9 +131,9 @@ public class AdvisorController {
         System.out.println(tmpProf.getSections());
 
         */
-        Professor professor = new Professor(0, "Charles Frisbie");
-        professorService.save(professor);
-        model.addAttribute("professor", professor);
+        List<Section> sections = sectionService.findAll();
+
+
         return "test/test";
     }
 
@@ -179,6 +180,7 @@ public class AdvisorController {
         return "advisor_mappings/add-section-results";
     }
 
+    @RequestMapping("/addProfessor")
     public String addProf(Model model){
 
         Professor professor = new Professor();
@@ -196,6 +198,22 @@ public class AdvisorController {
         professorService.save(professor);
         model.addAttribute("professor", professor);
         return "advisor_mappings/add-professor-results-page";
+    }
+
+    @RequestMapping("/attachProfessor")
+    public String attachProfessor(Model model){
+        List<Professor> professors = professorService.findAll();
+        List<Section> sections = sectionService.findAll(); // TODO: Add the sections findAll() to the DAO
+        model.addAttribute("professor", professors);
+        model.addAttribute("section", sections);
+        return "advisor_mappings/attach-professor";
+    }
+
+    @RequestMapping("/attachedProfessor")
+    public String attachedProfessor(@RequestParam("section") String sectionName,
+                                    Model model){
+        model.addAttribute("section", sectionName);
+        return "advisor_mappings/attached-professor";
     }
 
     

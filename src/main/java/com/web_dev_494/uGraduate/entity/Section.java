@@ -101,6 +101,9 @@ public class Section {
 		return "Section{" +
 				"CRN=" + CRN +
 				", className='" + className + '\'' +
+				", professor=" + professor +
+				", major=" + major +
+				", students=" + students +
 				'}';
 	}
 }

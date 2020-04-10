@@ -59,6 +59,8 @@ public class ProfessorDAOFunctionality implements ProfessorDAO {
 		return currentSession.get(Professor.class, id);
 	}
 
+
+
 	@Override
 	public void deleteById(int id) {
 		Session session = entityManager.unwrap(Session.class);
