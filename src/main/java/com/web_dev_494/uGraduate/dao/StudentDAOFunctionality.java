@@ -30,7 +30,7 @@ public class StudentDAOFunctionality implements StudentDAO {
         Session currentSession = entityManager.unwrap(Session.class);
         System.out.println("************FIND ALL");
         Query theQuery =
-                currentSession.createQuery("from Student ", Student.class);
+                currentSession.createQuery("from Student", Student.class);
 
         return theQuery.getResultList();
     }

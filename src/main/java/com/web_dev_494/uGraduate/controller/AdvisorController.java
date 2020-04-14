@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -56,8 +57,8 @@ public class AdvisorController {
     public String addStudent(@ModelAttribute("student") Student student, Model model){
 
         student.setId(0);
-        String newUsername = student.getFirstName().charAt(0) + student.getLastName() + student.getId();
-        student.setUsername(newUsername);
+        // Logic for the student username saving is in studentDAOFunctionality
+        System.out.println("Id is: " + student.getId());
         studentService.save(student);
         model.addAttribute("student", student);
         return "advisor_mappings/add-results-page";
@@ -66,8 +67,9 @@ public class AdvisorController {
     //---------------------------------------------------------------
    // @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/students")
-    public List<Student> findAll(){
-        return studentService.findAll();
+    public String findAll(Model model){
+        model.addAttribute("students", studentService.findAll());
+        return "testAll";
     }
     
     //@CrossOrigin(origins = "http://localhost:3000")
@@ -114,22 +116,15 @@ public class AdvisorController {
         // Joining works now!
 
 
-        /*
+
         Professor testProf = new Professor(0, "Mike");
         professorService.save(testProf);
 
         Section testSection = new Section("CS101", 0);
-        testProf.add(testSection);
         sectionService.save(testSection);
 
-        Professor tmpProf = professorService.findById(1);
-        System.out.println(tmpProf.getName());
-        System.out.println(tmpProf.getSections());
+        testProf.add(testSection);
 
-        */
-        Student student = new Student(0, "Fabian",
-                "Corpuz", "Computer Science", "fabski");
-        studentService.save(student);
 
         return "test/test";
     }
@@ -152,23 +147,14 @@ public class AdvisorController {
 
         Section section = new Section();
         model.addAttribute(section);
+        model.addAttribute(professorService.findAll());
         return "advisor_mappings/add-section";
     }
-
 
     @PostMapping("/addedSection")
     public String addedSection(@ModelAttribute("section") Section section,
                                Model model,
                                @RequestParam("professorName") String professorName){
-
-
-        if(professorService.findByName(professorName).size() == 0){
-            section.setProfessor(null);
-        }
-        else {
-            Professor professor = professorService.findByName(professorName).get(0);
-            section.setProfessor(professor);
-        }
 
 
         sectionService.save(section);
@@ -177,7 +163,53 @@ public class AdvisorController {
         return "advisor_mappings/add-section-results";
     }
 
+    @RequestMapping("/addProfessor")
+    public String addProf(Model model){
 
-    
+        Professor professor = new Professor();
+        model.addAttribute("professor",professor);
+        return "advisor_mappings/add-professor";
+
+    }
+
+    @PostMapping("/addedProfessor")
+    public String addedSection(@ModelAttribute("professor") Professor professor,
+                               Model model){
+
+        professor.setProfessorId(0);
+        String newUsername = professor.getName() + professor.getProfessorId();
+        professorService.save(professor);
+        model.addAttribute("professor", professor);
+        return "advisor_mappings/add-professor-results-page";
+    }
+
+    @RequestMapping("/attachProfessor")
+    public String attachProfessor(Model model){
+        List<Professor> professors = professorService.findAll();
+        List<Section> sections = sectionService.findAll(); // TODO: Add the sections findAll() to the DAO
+        model.addAttribute("professor", professors);
+        model.addAttribute("section", sections);
+        return "advisor_mappings/attach-professor";
+    }
+
+    @RequestMapping("/attachedProfessor")
+    public String attachedProfessor(@RequestParam("section") String sectionName,
+                                    @RequestParam("prof") String professorName,
+                                    Model model){
+
+        Section section = sectionService.findByName(sectionName).get(0);
+        Professor professor = professorService.findByName(professorName).get(0);
+
+        System.out.println("^^^ This was query to find the section and professor" +
+                " got " + section.getClassName());
+        professor.add(section);
+
+        sectionService.save(section);
+
+        //professorService.save(professor);
+
+
+        return "advisor_mappings/attached-professor";
+    }
 
 }

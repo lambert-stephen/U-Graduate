@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.web_dev_494.uGraduate.entity.Professor;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -45,6 +46,14 @@ public class SectionDAOFunctionality implements SectionDAO {
 			query.setParameter("name", name);
 
 			return query.getResultList();
+	}
+
+	@Override
+	public List<Section> findAll() {
+		Session session = entityManager.unwrap(Session.class);
+		Query theQuery = session.createQuery("from Section", Section.class);
+
+		return theQuery.getResultList();
 	}
 
 	@Override

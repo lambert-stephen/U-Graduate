@@ -89,4 +89,5 @@ public class StudentController {
 		model.addAttribute(student);
 		return "";
 	}
+
 }
