@@ -10,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -118,20 +116,14 @@ public class AdvisorController {
         // Joining works now!
 
 
-        /*
+
         Professor testProf = new Professor(0, "Mike");
         professorService.save(testProf);
 
         Section testSection = new Section("CS101", 0);
-        testProf.add(testSection);
         sectionService.save(testSection);
 
-        Professor tmpProf = professorService.findById(1);
-        System.out.println(tmpProf.getName());
-        System.out.println(tmpProf.getSections());
-
-        */
-        List<Section> sections = sectionService.findAll();
+        testProf.add(testSection);
 
 
         return "test/test";
@@ -163,15 +155,6 @@ public class AdvisorController {
     public String addedSection(@ModelAttribute("section") Section section,
                                Model model,
                                @RequestParam("professorName") String professorName){
-
-
-        if(professorService.findByName(professorName).size() == 0){
-            section.setProfessor(null);
-        }
-        else {
-            Professor professor = professorService.findByName(professorName).get(0);
-            section.setProfessor(professor);
-        }
 
 
         sectionService.save(section);
@@ -211,11 +194,22 @@ public class AdvisorController {
 
     @RequestMapping("/attachedProfessor")
     public String attachedProfessor(@RequestParam("section") String sectionName,
+                                    @RequestParam("prof") String professorName,
                                     Model model){
-        model.addAttribute("section", sectionName);
+
+        Section section = sectionService.findByName(sectionName).get(0);
+        Professor professor = professorService.findByName(professorName).get(0);
+
+        System.out.println("^^^ This was query to find the section and professor" +
+                " got " + section.getClassName());
+        professor.add(section);
+
+        sectionService.save(section);
+
+        //professorService.save(professor);
+
+
         return "advisor_mappings/attached-professor";
     }
-
-    
 
 }

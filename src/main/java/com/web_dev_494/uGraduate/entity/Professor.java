@@ -58,17 +58,21 @@ public class Professor {
 	 	if(this.sections == null){
 	 		this.sections = new ArrayList<>();
 		}
+		System.out.println("Adding " + section.getClassName());
 
 	 	this.sections.add(section);
 	 	section.setProfessor(this);
 	}
+
+
 
 	@Override
 	public String toString() {
 		return "Professor{" +
 				"professorId=" + professorId +
 				", name='" + name + '\'' +
-				", sections=" + sections +
 				'}';
 	}
+
+
 }

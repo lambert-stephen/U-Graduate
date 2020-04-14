@@ -102,8 +102,9 @@ public class Section {
 				"CRN=" + CRN +
 				", className='" + className + '\'' +
 				", professor=" + professor +
-				", major=" + major +
 				", students=" + students +
 				'}';
 	}
+
+
 }

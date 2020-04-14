@@ -16,6 +16,7 @@ public class Authorities implements GrantedAuthority {
             CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="user")
     private User user;
+
     @Column(name = "authority")
     private String authority;
 
