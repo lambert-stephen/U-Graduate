@@ -104,7 +104,7 @@ This is all done through inner joins on hibernate and spring.
 Fabian - Worked on most of the hibernate queries. Worked on most of the MySql queries and created the design patterns of the framework
 Hanna - 
 Jonathan - 
-Stephen - 
+Stephen - Worked on buidling the testing framework, github actions, and passing the tests written for the controllers, mappings,and security authentication, using spring boot. Also worked on displaying results for the student home page, using react and bootstrap
 
 The student should have been be able to query and register for classes. Still not done. But Fabian will get that done by next checkpoint. 
 Hashing password in the db is also something that was meant to get done way sooner. 
@@ -116,7 +116,7 @@ too bad.
 Fabian - in charge of finishing functionality touches. 
 Hanna - 
 Jonathan - 
-Stephen - 
+Stephen - in charge of finishing the testing framework, and displaying results for the student home page
 
 Changes from original plan aren't substantial. We wanted to create a registration system. What we have right now is a registration 
 system where you as an admin can add classes and professors and majors and students. As a student, its a registration where you can't
