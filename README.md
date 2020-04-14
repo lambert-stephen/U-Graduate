@@ -24,7 +24,7 @@ updates the GUI accordingly.
 
 | Member | Web dev level | Specialization |
 | --- | --- | --- |
-| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | Security. I want to learn how to properly utilize security in a non-trivial way. I will customize the IAM on AWS and use credential-less storing so we are not storing keys on the repo. 2f authentication. Since there is no incredibly obvious security solution for this registration system, I will designate all security aspects of the application as my specialization |
+| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | The Spring Framework, to include Spring MVC, Spring Boot, Spring Security, and Spring Data. Learn Hibernate too |
 | Hanna Thayyil | Novice | --- |
 | Jonathan Vega the Intermediate | Took IT202, flew through most content though.. | Front-end. Bootstrap, JQuery, probably React |
 | Stephen Lambert | Novice | --- |
@@ -57,10 +57,7 @@ a schema
 
 ## Deliverables for checkpoint 4
 
-Finish implementing what we did not get to do for checkpoint 2. 
-Also start making the front end more interactive. 
 
-Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user. 
 
 ## Deliverables for final project
 
