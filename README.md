@@ -53,14 +53,48 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 Deployment Notes
 - Security progress: Configured spring security to only accept roles signified in the SecurityConfig.java class. Only 
 people with the role "ADMIN" and "STUDENT" can log in. Spring security puts it all on lockdown. Our database has 
-a schema 
+a schema that use a master record of all users. There is a one to many join between users and authorities. Authorities
+has a value "ROLE_USERROLE" and it can be "STUDENT" or "ADMIN". Redirects are then sent according to roles. 
+
+**NOTE: I spent too much time figuring out the workings of Spring Security and how to properly configure it. I even 
+pushed all throughout spring break. I was not able to get .env and secrets to work so at the moment I have them 
+saved in the code. Will be changing that for next deployment.
+- How to Deploy: 
+- Step 1: Download our directory and open up src\main\resources\applications.properties. set spring.datasource.url to
+jdbc:mysql://test-database.cmuqwxmahqss.us-east-1.rds.amazonaws.com/test?useSSL=false&serverTimezone=UTC
+There is a username and password right under that. Change that to 
+username: admin
+password: 12345678
+Run a "mvn clean package" on the cmd line and this should create a file under the target directory. 
+(in intellij it created it under master/target). This file was SNAP_SHOT.war. Don't user the .war.original. 
+
+- Step 2: Log in to your aws account and go to the dashboard that has all the services. Click on Elastic 
+Beanstalk. You are going to create a new environment, click on new environment button and leave web server environment 
+default. go to the next page. Add an application name, environment name (to whatever you want), choose platform 
+as TOMCAT. The next section will then have you upload your own code (under the same page of application code). local 
+and upload the war file you recently created. It will upload for about a few minutes. And go on to the next page to 
+deploy. This part will take a while (took me 10min). 
+NOTES OF THE APP. 
+Login to the app first by using username: admin | password: admin. Here you can add students, search them and add
+sections. Adding a student will create a user and allow login access. Adding a section will link students with
+that required major. 
+
+Try this. 
+
+Add new student. Name: Whatever you want. last name: whatever you want. Major to whatever you want. 
+Click submit. Save the username and password it gives. Now go to add section. Add a section. Enter 
+a class name. Leave professor blank (will implement later) and pick the course that corresponds to the major
+you selected earlier. submit. 
+
+Then go to localhost:8080/logout. logout. 
+
+Login with that credentials you got from the first username you created. Click on the first hyperlink. (Second one
+is broken) and it will make a get request of all the courses associated with that user.   
 
 ## Deliverables for checkpoint 4
 
-Finish implementing what we did not get to do for checkpoint 2. 
-Also start making the front end more interactive. 
+Functionality is ALMOST complete based off of what 
 
-Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user. 
 
 ## Deliverables for final project
 
