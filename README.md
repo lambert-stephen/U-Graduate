@@ -93,17 +93,47 @@ is broken) and it will make a get request of all the courses associated with tha
 
 ## Deliverables for checkpoint 4
 
-Functionality is ALMOST complete based off of what
+Functionality is ALMOST complete. We prioritized a few things over what was originally proposed. It was originally proposed
+that the app would focus on the student side of things (what they can see and register for, etc) but the admin side of things
+is what has been built. So far, an admin can add a student and attach a major to him/her. An admin can add a section 
+and attach a major or a professor to the section. The admin can also attach professors to sections (without creating a new section or professor).
+
+Now on the student side, the student can see all required sections that has the same major as them. only a cs student can see cs classes. 
+This is all done through inner joins on hibernate and spring. 
+
+Fabian - Worked on most of the hibernate queries. Worked on most of the MySql queries and created the design patterns of the framework
+Hanna - 
+Jonathan - 
+Stephen - 
+
+The student should have been be able to query and register for classes. Still not done. But Fabian will get that done by next checkpoint. 
+Hashing password in the db is also something that was meant to get done way sooner. 
+
+Plan of attack for 5 is just zeroing on the last functionality we want to have and making sure we don't break anything. The student
+side needs to get finished, but the admin side is almost done and had most of the functionality so getting the student side done should't be
+too bad. 
+
+Fabian - in charge of finishing functionality touches. 
+Hanna - 
+Jonathan - 
+Stephen - 
+
+Changes from original plan aren't substantial. We wanted to create a registration system. What we have right now is a registration 
+system where you as an admin can add classes and professors and majors and students. As a student, its a registration where you can't
+really take any action. But that is ok because it will be complete by the last deliverable. One thing that probably won't be added is
+the "completed"/"in progress" capability. The hibernate queries were pretty bad to learn to begin with. To add two other entries to the db, 
+plus entries to the entity, Service, DAO and other DAO design pattern classes and interfaces would be a nightmare. I did that 
+once and had to rewrite the entire design pattern over again. It was a GREAT learning experience though. The reason why we have the SOLID principles
+makes so much more sense. Had the design patterns been more decoupled, and had I coded to the interface, I would not have needed to rewrite 
+things when other semi-unrelated objects needed to change. Planning and using UML diagrams and use case diagrams is also something I am going 
+to start doing from now on... 
 
 
 ## Deliverables for final project
 
-Outline in English what the deliverables will be for the final checkpoint. This will should be
-similar to the **Description** above, but written out as an explicit checklist rather than a human
-readable description. Reminder that this is not *due* until checkpoint 4, but failing to plan is
-planning to fail.
-
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+Functionality
+- Students should be able to search for a specific class
+- Students should be able to register for a course. 
 
 ## Specialization deliverables
 
