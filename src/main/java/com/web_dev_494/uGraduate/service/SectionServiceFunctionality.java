@@ -51,4 +51,9 @@ public class SectionServiceFunctionality implements SectionService {
 	public List<Section> findByMajor(int name) {
 		return sectionDAO.findByMajor(name);
 	}
+
+	@Override
+	public List<Section> findByStudent(String username) {
+		return sectionDAO.findByStudent(username);
+	}
 }

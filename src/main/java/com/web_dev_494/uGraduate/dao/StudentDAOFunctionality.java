@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +17,6 @@ import java.util.List;
 
 @Repository
 public class StudentDAOFunctionality implements StudentDAO {
-
     private EntityManager entityManager;
 
     @Autowired
@@ -51,7 +51,8 @@ public class StudentDAOFunctionality implements StudentDAO {
     public void save(Student student){
         Session currentSession = entityManager.unwrap(Session.class);
         if(student.getId() == 0){
-            currentSession.saveOrUpdate(new User(0, student.getUsername(), "password"));
+            currentSession.saveOrUpdate(new User(0,
+                    student.getUsername(), "password"));
 
             Query query = currentSession.createQuery("from User s where s.username =:username" );
             query.setParameter("username", student.getUsername());
@@ -82,18 +83,12 @@ public class StudentDAOFunctionality implements StudentDAO {
         //get current hibernate session
         Session currentSession = entityManager.unwrap(Session.class);
         //get student
+        Query query = currentSession.createQuery("from Student s where" + " s.id =: stuId");
+        query.setParameter("stuId", id);
+        Student student = (Student) query.getResultList().get(0);
 
-        return currentSession.get(Student.class, id);
+        return student;
 
-    }
-
-    @Override
-    public void deleteById(int id){
-        Session currentSession = entityManager.unwrap(Session.class);
-        Query query = currentSession.createQuery("delete from Student where id=:studentId");
-        query.setParameter("studentId", id);
-
-        query.executeUpdate();
     }
 
     @Override
@@ -119,5 +114,14 @@ public class StudentDAOFunctionality implements StudentDAO {
     @Override
     public void deleteByName(String name) {
 
+    }
+
+    @Override
+    public void deleteById(int id){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query query = currentSession.createQuery("delete from Student where id=:studentId");
+        query.setParameter("studentId", id);
+
+        query.executeUpdate();
     }
 }

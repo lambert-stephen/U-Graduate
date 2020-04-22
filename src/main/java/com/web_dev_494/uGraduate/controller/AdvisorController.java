@@ -59,13 +59,14 @@ public class AdvisorController {
         student.setId(0);
         // Logic for the student username saving is in studentDAOFunctionality
         System.out.println("Id is: " + student.getId());
+        student.setUsername("temp" + student.getFirstName() + student.getLastName());
         studentService.save(student);
         model.addAttribute("student", student);
         return "advisor_mappings/add-results-page";
     }
 
     //---------------------------------------------------------------
-   // @CrossOrigin(origins = "http://localhost:3000")
+    // @CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/students")
     public String findAll(Model model){
         model.addAttribute("students", studentService.findAll());
@@ -117,15 +118,16 @@ public class AdvisorController {
 
 
 
-        Professor testProf = new Professor(0, "Mike");
-        professorService.save(testProf);
+        //Professor testProf = new Professor(0, "Mike");
+        //professorService.save(testProf);
 
-        Section testSection = new Section("CS101", 0);
-        sectionService.save(testSection);
+        //Section testSection = new Section("CS101", 0);
+        //sectionService.save(testSection);
 
-        testProf.add(testSection);
+        //testProf.add(testSection);
 
-
+        Professor snape = professorService.findByName("snape").get(0);
+        System.out.println(snape.getSections());
         return "test/test";
     }
 
@@ -178,7 +180,9 @@ public class AdvisorController {
 
         professor.setProfessorId(0);
         String newUsername = professor.getName() + professor.getProfessorId();
+
         professorService.save(professor);
+
         model.addAttribute("professor", professor);
         return "advisor_mappings/add-professor-results-page";
     }
@@ -186,7 +190,7 @@ public class AdvisorController {
     @RequestMapping("/attachProfessor")
     public String attachProfessor(Model model){
         List<Professor> professors = professorService.findAll();
-        List<Section> sections = sectionService.findAll(); // TODO: Add the sections findAll() to the DAO
+        List<Section> sections = sectionService.findAll();
         model.addAttribute("professor", professors);
         model.addAttribute("section", sections);
         return "advisor_mappings/attach-professor";
@@ -200,14 +204,11 @@ public class AdvisorController {
         Section section = sectionService.findByName(sectionName).get(0);
         Professor professor = professorService.findByName(professorName).get(0);
 
-        System.out.println("^^^ This was query to find the section and professor" +
-                " got " + section.getClassName());
         professor.add(section);
+        section.setProfessor(professor);
 
+        professorService.save(professor);
         sectionService.save(section);
-
-        //professorService.save(professor);
-
 
         return "advisor_mappings/attached-professor";
     }

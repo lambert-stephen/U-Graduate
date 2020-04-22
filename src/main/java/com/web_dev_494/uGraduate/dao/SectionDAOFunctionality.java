@@ -26,6 +26,7 @@ public class SectionDAOFunctionality implements SectionDAO {
 		 public void save(Section section) {
 
 	    	 Session currentSession = entityManager.unwrap(Session.class);
+
 	         currentSession.saveOrUpdate(section);
 		 }
 
@@ -64,6 +65,20 @@ public class SectionDAOFunctionality implements SectionDAO {
 		query.setParameter("name", name);
 
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Section> findByStudent(String username) {
+	    Session session = entityManager.unwrap(Session.class);
+
+		System.out.println("looking for " + username);
+
+		// TODO: Figure out this many to many query
+	    Query query = session.createQuery("SELECT s FROM Section s JOIN s.students a WHERE " +
+				"a.username=:susername");
+	    query.setParameter("susername", username);
+
+	    return query.getResultList();
 	}
 
 	@Override

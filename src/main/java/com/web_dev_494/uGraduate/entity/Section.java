@@ -17,8 +17,8 @@ public class Section {
 	 @Column(name = "class_name")
 	 private String className;
 
-	 @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
-                           CascadeType.DETACH, CascadeType.REFRESH})
+	 @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH,
+			               CascadeType.MERGE, CascadeType.REFRESH})
 	 @JoinColumn(name="professor_id")
 	 private Professor professor;
 
@@ -28,7 +28,7 @@ public class Section {
 	@Column(name = "major_id")
 	 private int major;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE,
 			CascadeType.DETACH, CascadeType.REFRESH})
 	@JoinTable(
 			name = "student_section",
@@ -43,9 +43,8 @@ public class Section {
 	 }
 
 	 //how to handle assigning the students array list
-	 public Section(String className, int CRN){
+	 public Section(String className){
 		 this.className = className;
-		 this.CRN = CRN;
 	 }
 	 
 	public int getCRN() {
@@ -92,8 +91,6 @@ public class Section {
 		}
 
 	 	students.add(student);
-
-
 	}
 
 	@Override
@@ -101,8 +98,6 @@ public class Section {
 		return "Section{" +
 				"CRN=" + CRN +
 				", className='" + className + '\'' +
-				", professor=" + professor +
-				", students=" + students +
 				'}';
 	}
 
