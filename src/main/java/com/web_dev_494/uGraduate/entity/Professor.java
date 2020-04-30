@@ -16,16 +16,16 @@ public class Professor {
 	 @Column(name = "professor_name")
 	 private String name;
 
+	 // TODO: Hibernate isn't joining professor with section. Fix it
 	 @OneToMany(mappedBy = "professor",
-	 			cascade = {CascadeType.DETACH, CascadeType.MERGE,
+	 			cascade = {CascadeType.PERSIST, CascadeType.MERGE,
 						   CascadeType.DETACH, CascadeType.REFRESH})
 	 private List<Section> sections;
 
 	 //constructors
 	 public Professor(){};
 
-	 public Professor(int professorId, String name){
-		 this.professorId = professorId;
+	 public Professor(String name){
 		 this.name = name;
 	 }
 	 
@@ -54,16 +54,15 @@ public class Professor {
 		this.sections = sections;
 	}
 
-	public void add(Section section){
-	 	if(this.sections == null){
-	 		this.sections = new ArrayList<>();
+	public void add(Section tempSection){
+	 	if(sections == null){
+	 		sections = new ArrayList<>();
 		}
-		System.out.println("Adding " + section.getClassName());
+		System.out.println("Adding " + tempSection.getClassName());
 
-	 	this.sections.add(section);
-	 	section.setProfessor(this);
+	 	sections.add(tempSection);
+		tempSection.setProfessor(this);
 	}
-
 
 
 	@Override

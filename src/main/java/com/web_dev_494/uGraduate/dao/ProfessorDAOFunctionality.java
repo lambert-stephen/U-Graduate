@@ -32,6 +32,7 @@ public class ProfessorDAOFunctionality implements ProfessorDAO {
 		Session currentSession = entityManager.unwrap(Session.class);
 
 		if(p.getProfessorId() == 0){
+			System.out.println("Shouldn't have gone here");
 			currentSession.save(p);
 
 			Query query = currentSession.createQuery("from Professor p where p.name =: username");

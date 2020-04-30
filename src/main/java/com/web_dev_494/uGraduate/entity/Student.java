@@ -102,14 +102,6 @@ public class Student{
         this.sections = sections;
     }
 
-    public void addSection(Section section){
-        if(section == null){
-            sections = new ArrayList<>();
-        }
-
-        sections.add(section);
-    }
-
     @Override
     public String toString() {
         return "Student{" +
