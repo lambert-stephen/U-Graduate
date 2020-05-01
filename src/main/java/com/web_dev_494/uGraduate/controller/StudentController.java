@@ -122,8 +122,9 @@ public class StudentController {
 	}
 
 	@RequestMapping("/changePassword")
-	public String changePassword(){
-
+	public String changePassword(Model model, @AuthenticationPrincipal User user){
+		student = studentService.findByUsername(user.getUsername());
+		model.addAttribute("student", student);
 		return "student_mappings/change-password";
 	}
 
