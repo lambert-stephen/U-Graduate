@@ -37,8 +37,8 @@
 			var contextMapping = "${pageContext.request.contextPath}";
 		</script>
 <br>
-<a href="${pageContext.request.contextPath}/student/courselist"> See All courses in your major </a> <br>
-<a href="${pageContext.request.contextPath}/student/viewRegistered"> See all your registered courses </a> <br>
+<a href="${pageContext.request.contextPath}/student/courselist"> See All Courses For Your Major </a> <br>
+<a href="${pageContext.request.contextPath}/student/viewRegistered"> See All Registered Courses </a> <br>
 <a href="${pageContext.request.contextPath}/student/register"> Register for Course </a> <br>
 <a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br>
 <a href="#"> Logout </a> <br>

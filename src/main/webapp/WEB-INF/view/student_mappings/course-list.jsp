@@ -12,7 +12,7 @@
 <html>
 <head>
     <title>${student.firstName}'s Course List</title>
-        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,7 +22,6 @@
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
 </head>
 <body>
 
@@ -43,11 +42,10 @@
 			var contextMapping = "${pageContext.request.contextPath}";
 		</script>
 <br>
-<a href="${pageContext.request.contextPath}/student/courselist"> See All courses in your major </a> <br>
-<a href="${pageContext.request.contextPath}/student/viewRegistered"> See all your registered courses </a> <br>
+<a href="${pageContext.request.contextPath}/student/courselist"> See All Courses For Your Major </a> <br>
+<a href="${pageContext.request.contextPath}/student/viewRegistered"> See All Registered Courses </a> <br>
 <a href="${pageContext.request.contextPath}/student/register"> Register for Course </a> <br>
-<a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br>
-<a href="#"> Logout </a> <br>
+<a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br><a href="#"> Logout </a> <br>
 
 </div>
 </nav>
@@ -55,8 +53,8 @@
 
 
 <div class="container">
-  <h2>Hey, ${student.firstName}</h2>
-  <p>These are all the CS courses that you need:</p>            
+  <h2>Courses Needed</h2>
+  <p>Listed below are all the courses that you need:</p>            
   <table class="table">
     <thead>
       <tr>

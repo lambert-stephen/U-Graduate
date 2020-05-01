@@ -108,6 +108,7 @@ public class StudentController {
 	public String viewRegistered(Model model, @AuthenticationPrincipal User user){
 		student = studentService.findByUsername(user.getUsername());
 		List<Section> sections = sectionService.findByStudent(student.getUsername());
+		model.addAttribute("student", student);
 		model.addAttribute("sections", sections);
 
 		/*
