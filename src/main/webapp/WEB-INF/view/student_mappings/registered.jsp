@@ -12,7 +12,11 @@
 </head>
 <body>
 
-${student}, you registered for ${section}
+${student.firstName}, you registered for ${section}
+
+<div>
+<p>DEBUG:${student}</p>
+</div>
 
 </body>
 </html>
