@@ -44,6 +44,7 @@ public class AdvisorController {
     public String searchStudent(Model model){
         return "advisor_mappings/search-student-page";
     }
+
     
     //@CrossOrigin(origins = "http://localhost:3000")
     @RequestMapping("/addStudent")
@@ -212,5 +213,164 @@ public class AdvisorController {
 
         return "advisor_mappings/attached-professor";
     }
+    
+    @RequestMapping("/addMajor")
+    public String addMajor(Model model){
+    	  Major major = new Major();
+          model.addAttribute(major);
+        return "advisor_mappings/add-major-page";
+    }
+    
+    
+    @PostMapping("/addedMajor")
+    public String addMajor(@ModelAttribute("major") Major major, Model model){
 
-}
+        major.setMajorId(0);
+        // Logic for the student username saving is in studentDAOFunctionality
+        System.out.println("Id is: " + major.getMajorId());
+        System.out.println("NAME is: " + major.getName());
+       // student.setUsername("temp" + student.getFirstName() + student.getLastName());
+        majorService.save(major);
+        model.addAttribute("major", major);
+        return "advisor_mappings/add-major-results-page";
+    }
+    
+    @RequestMapping("/removeMajor")
+    public String removeMajor(Model model){
+    	List<Major> majorList = majorService.findAll();
+          model.addAttribute("major", majorList);
+        return "advisor_mappings/remove-major-page";
+    }
+    
+
+    @PostMapping("/removedMajor")
+    public String removeMajor(@RequestParam("majorSelection") String majorId, @ModelAttribute("major") Major major,
+                               Model model){
+    
+    	System.out.println("Id is: " + majorId);
+    	//majorService.deleteById(Integer.parseInt(majorId));
+        model.addAttribute("major", majorId);
+
+        return "advisor_mappings/removed-major-page";
+    }
+    
+    //@CrossOrigin(origins = "http://localhost:3000")
+    @RequestMapping("/removeStudent")
+    public String removeStudent(Model model){
+    	
+    	
+        Student student = new Student();
+        model.addAttribute(student);
+        return "advisor_mappings/remove-student-page";
+    }
+
+    @PostMapping("/removedStudent")
+    public String removeStudent(@ModelAttribute("student") Student student, Model model){
+
+   
+        // Logic for the student username saving is in studentDAOFunctionality
+        System.out.println("Id is: " + student.getId());
+       // student.setUsername("temp" + student.getFirstName() + student.getLastName());
+         studentService.deleteById(student.getId());
+       // studentService.save(student);
+        model.addAttribute("studentId", student.getId());
+        return "advisor_mappings/remove-students-result";
+    }
+    
+    @RequestMapping("/removeSection")
+    public String removeSection(Model model){
+    	List<Section> sectionList = sectionService.findAll();
+          model.addAttribute("section", sectionList);
+          
+        return "advisor_mappings/remove-section-page";
+    }
+    
+
+    @PostMapping("/removedSection")
+    public String removeMajor(@RequestParam("sectionSelection") String sectionCRN, @ModelAttribute("section") Section section,
+                               Model model){
+    
+    	System.out.println("Id is: " + sectionCRN);
+    	//majorService.deleteById(Integer.parseInt(majorId));
+        model.addAttribute("section", sectionCRN);
+
+        return "advisor_mappings/removed-section-page";
+    }
+    
+    @RequestMapping("/removeProfessor")
+    public String removeProfessor(Model model){
+    	List<Professor> professorList= professorService.findAll();
+          model.addAttribute("professor", professorList);
+          
+        return "advisor_mappings/remove-professor-page";
+    }
+    
+
+    @PostMapping("/removedProfessor")
+    public String removeProfessor(@RequestParam("professorSelection") String professorId, @ModelAttribute("professor") Professor professor,
+                               Model model){
+    
+    	System.out.println("Id is: " + professorId);
+    	//majorService.deleteById(Integer.parseInt(majorId));
+        model.addAttribute("professor", professorId);
+
+        return "advisor_mappings/removed-professor-page";
+    }
+    
+
+    @RequestMapping("/searchMajor")
+    public String searchMajor(Model model){
+        return "advisor_mappings/search-major-page";
+    }
+
+
+    @RequestMapping("/majorbyName")
+    public String getMajorName(@RequestParam("id") String majorId, Model model){
+
+        Major major = majorService.findById(Integer.parseInt(majorId));
+        model.addAttribute("major", major);
+
+        return "advisor_mappings/search-major-results";
+    }
+
+    
+    @RequestMapping("/searchSection")
+    public String searchSection(Model model){
+        return "advisor_mappings/search-section-page";
+    }
+
+
+    @RequestMapping("/sectionbyName")
+    public String getSectionName(@RequestParam("name") String sectionName, Model model){
+
+       List<Section> section = sectionService.findByName(sectionName);
+        model.addAttribute("section", section);
+
+        return "advisor_mappings/search-section-results";
+    }
+
+    @RequestMapping("/searchProfessor")
+    public String searchProfessor(Model model){
+        return "advisor_mappings/search-professor-page";
+    }
+
+
+    @RequestMapping("/professorbyName")
+    public String getProfessor(@RequestParam("name") String profName, Model model){
+
+       List<Professor> prof = professorService.findByName(profName);
+        model.addAttribute("professors", prof);
+
+        return "advisor_mappings/search-professor-results";
+    }
+
+    
+    
+
+    
+    
+    }
+    
+    
+
+

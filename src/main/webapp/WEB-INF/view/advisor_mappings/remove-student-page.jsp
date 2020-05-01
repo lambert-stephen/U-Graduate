@@ -1,5 +1,3 @@
-
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
@@ -11,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
-    	<title>Add Professor</title>
+    	<title>Remove Student</title>
     	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -25,12 +23,11 @@
 
 		<div class="container">
 		  <br />
-  <h2 class="text-center">Add Professor</h2>
+  <h2 class="text-center">Remove Student</h2>
 
-  <form:form action= "${pageContext.request.contextPath}/advisor/addedProfessor" modelAttribute= "professor" method="post">
+		<form:form action= "${pageContext.request.contextPath}/advisor/removedStudent" modelAttribute= "student" method="post">
 
-    <p>Enter the Professor's Full Name</p> <form:input path="name" class="form-control"/>
-
+    <p>Enter Student's Id/p> <form:input path="id" class="form-control"/>
 	<br/><br/>
     <input type="submit" value="Submit" class="btn btn-primary">
 </form:form>
