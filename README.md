@@ -1,6 +1,6 @@
 # We Push to Master Final Project
 
-**NOTE** 
+**NOTE**
 To run our application, go to the following link:
 TestRun2-env.xptiszvwju.us-east-1.elasticbeanstalk.com
 
@@ -24,7 +24,7 @@ updates the GUI accordingly.
 
 | Member | Web dev level | Specialization |
 | --- | --- | --- |
-| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | Security. I want to learn how to properly utilize security in a non-trivial way. I will customize the IAM on AWS and use credential-less storing so we are not storing keys on the repo. 2f authentication. Since there is no incredibly obvious security solution for this registration system, I will designate all security aspects of the application as my specialization |
+| Fabian Miranda Corpuz | Dabbled with a lot of Java and Spring MVC | The Spring Framework, to include Spring MVC, Spring Boot, Spring Security, and Spring Data. Learn Hibernate too |
 | Hanna Thayyil | Novice | --- |
 | Jonathan Vega the Intermediate | Took IT202, flew through most content though.. | Front-end. Bootstrap, JQuery, probably React |
 | Stephen Lambert | Novice | --- |
@@ -51,79 +51,91 @@ Fabian - mess around with Spring Security and configure things as needed. Still 
 
 ## Deliverables for checkpoint 3
 Deployment Notes
-- Security progress: Configured spring security to only accept roles signified in the SecurityConfig.java class. Only 
-people with the role "ADMIN" and "STUDENT" can log in. Spring security puts it all on lockdown. Our database has 
+- Security progress: Configured spring security to only accept roles signified in the SecurityConfig.java class. Only
+people with the role "ADMIN" and "STUDENT" can log in. Spring security puts it all on lockdown. Our database has
 a schema that use a master record of all users. There is a one to many join between users and authorities. Authorities
-has a value "ROLE_USERROLE" and it can be "STUDENT" or "ADMIN". Redirects are then sent according to roles. 
+has a value "ROLE_USERROLE" and it can be "STUDENT" or "ADMIN". Redirects are then sent according to roles.
 
-**NOTE: I spent too much time figuring out the workings of Spring Security and how to properly configure it. I even 
-pushed all throughout spring break. I was not able to get .env and secrets to work so at the moment I have them 
+**NOTE: I spent too much time figuring out the workings of Spring Security and how to properly configure it. I even
+pushed all throughout spring break. I was not able to get .env and secrets to work so at the moment I have them
 saved in the code. Will be changing that for next deployment.
-
-
-- How to Deploy: 
-
+- How to Deploy:
 - Step 1: Download our directory and open up src\main\resources\applications.properties. set spring.datasource.url to
-
 jdbc:mysql://test-database.cmuqwxmahqss.us-east-1.rds.amazonaws.com/test?useSSL=false&serverTimezone=UTC
-
-There is a username and password right under that. Change that to 
+There is a username and password right under that. Change that to
 username: admin
 password: 12345678
-Run a "mvn clean package" on the cmd line and this should create a file under the target directory. 
-(in intellij it created it under master/target). This file was SNAP_SHOT.war. Don't user the .war.original. 
+Run a "mvn clean package" on the cmd line and this should create a file under the target directory.
+(in intellij it created it under master/target). This file was SNAP_SHOT.war. Don't user the .war.original.
 
-- Step 2: Log in to your aws account and go to the dashboard that has all the services. Click on Elastic 
-Beanstalk. You are going to create a new environment, click on new environment button and leave web server environment 
-default. go to the next page. Add an application name, environment name (to whatever you want), choose platform 
-as TOMCAT. The next section will then have you upload your own code (under the same page of application code). local 
-and upload the war file you recently created. It will upload for about a few minutes. And go on to the next page to 
-deploy. This part will take a while (took me 10min). 
-
-NOTES OF THE APP. 
-
+- Step 2: Log in to your aws account and go to the dashboard that has all the services. Click on Elastic
+Beanstalk. You are going to create a new environment, click on new environment button and leave web server environment
+default. go to the next page. Add an application name, environment name (to whatever you want), choose platform
+as TOMCAT. The next section will then have you upload your own code (under the same page of application code). local
+and upload the war file you recently created. It will upload for about a few minutes. And go on to the next page to
+deploy. This part will take a while (took me 10min).
+NOTES OF THE APP.
 Login to the app first by using username: admin | password: admin. Here you can add students, search them and add
 sections. Adding a student will create a user and allow login access. Adding a section will link students with
-that required major. 
+that required major.
 
-Try this. 
+Try this.
 
-Add new student. Name: Whatever you want. last name: whatever you want. Major to whatever you want. 
-Click submit. Save the username and password it gives. Now go to add section. Add a section. Enter 
+Add new student. Name: Whatever you want. last name: whatever you want. Major to whatever you want.
+Click submit. Save the username and password it gives. Now go to add section. Add a section. Enter
 a class name. Leave professor blank (will implement later) and pick the course that corresponds to the major
-you selected earlier. submit. 
+you selected earlier. submit.
 
-Then go to localhost:8080/logout. logout. 
+Then go to localhost:8080/logout. logout.
 
 Login with that credentials you got from the first username you created. Click on the first hyperlink. (Second one
 is broken) and it will make a get request of all the courses associated with that user.   
 
 ## Deliverables for checkpoint 4
 
+Functionality is ALMOST complete. We prioritized a few things over what was originally proposed. It was originally proposed
+that the app would focus on the student side of things (what they can see and register for, etc) but the admin side of things
+is what has been built. So far, an admin can add a student and attach a major to him/her. An admin can add a section 
+and attach a major or a professor to the section. The admin can also attach professors to sections (without creating a new section or professor).
 
-- Step 1: Log in to your aws account and go to the dashboard that has all the services. click on RDS. 
-Under resources there is a hyperlink that says DB Instances. Click on that and click on create database on the next
-page. Select Easy create. Select Configuration MySQL. Set DB instance size to Production.. JK set it to free tier. 
-DB Instance Identifier as default. Master username to whatever you want. password to whatever. Start the database. 
+Now on the student side, the student can see all required sections that has the same major as them. only a cs student can see cs classes. 
+This is all done through inner joins on hibernate and spring. 
 
-- Step 2: Go to the dashboard of the database you just made. There is a summary section but right under that, 
-you will see connectivity and security. Look at endpoint and port. The link under "Endpoint" is how to connect. 
-Save this. the port is 3306 by default. 
+Fabian - Worked on most of the hibernate queries. Worked on most of the MySql queries and created the design patterns of the framework
+Hanna - 
+Jonathan - 
 
+Stephen - Worked on buidling the testing framework, github actions, and passing the tests written for the controllers, mappings,and security authentication, using spring boot. Also worked on displaying results for the student home page, using react and bootstrap
 
-Finish implementing what we did not get to do for checkpoint 2. 
-Also start making the front end more interactive. 
+The student should have been be able to query and register for classes. Still not done. But Fabian will get that done by next checkpoint. 
+Hashing password in the db is also something that was meant to get done way sooner. 
 
-Fabian - establish access control for CRUD operations. For example, properly add users to spring security with relative permissions when an user adds another student or another user. 
+Plan of attack for 5 is just zeroing on the last functionality we want to have and making sure we don't break anything. The student
+side needs to get finished, but the admin side is almost done and had most of the functionality so getting the student side done should't be
+too bad. 
+
+Fabian - in charge of finishing functionality touches. 
+Hanna - 
+Jonathan - 
+
+Stephen - in charge of finishing the testing framework, and displaying results for the student home page
+
+Changes from original plan aren't substantial. We wanted to create a registration system. What we have right now is a registration 
+system where you as an admin can add classes and professors and majors and students. As a student, its a registration where you can't
+really take any action. But that is ok because it will be complete by the last deliverable. One thing that probably won't be added is
+the "completed"/"in progress" capability. The hibernate queries were pretty bad to learn to begin with. To add two other entries to the db, 
+plus entries to the entity, Service, DAO and other DAO design pattern classes and interfaces would be a nightmare. I did that 
+once and had to rewrite the entire design pattern over again. It was a GREAT learning experience though. The reason why we have the SOLID principles
+makes so much more sense. Had the design patterns been more decoupled, and had I coded to the interface, I would not have needed to rewrite 
+things when other semi-unrelated objects needed to change. Planning and using UML diagrams and use case diagrams is also something I am going 
+to start doing from now on... 
+
 
 ## Deliverables for final project
 
-Outline in English what the deliverables will be for the final checkpoint. This will should be
-similar to the **Description** above, but written out as an explicit checklist rather than a human
-readable description. Reminder that this is not *due* until checkpoint 4, but failing to plan is
-planning to fail.
-
-For each specialization, you must list specific checkpoints that are relevant to that particular specialization.
+Functionality
+- Students should be able to search for a specific class
+- Students should be able to register for a course. 
 
 ## Specialization deliverables
 

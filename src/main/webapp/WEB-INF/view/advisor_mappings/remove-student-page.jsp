@@ -1,14 +1,15 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Fabian
   Date: 3/2/2020
-  Time: 4:19 PM
+  Time: 4:27 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
-    	<title>Advisor Homepage</title>
+    	<title>Remove Student</title>
     	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -17,7 +18,20 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		</head>
 	<body>
-	<div id="nav"></div>
+
+		<div id="nav"></div>
+
+		<div class="container">
+		  <br />
+  <h2 class="text-center">Remove Student</h2>
+
+		<form:form action= "${pageContext.request.contextPath}/advisor/removedStudent" modelAttribute= "student" method="post">
+
+    <p>Enter Student's Id/p> <form:input path="id" class="form-control"/>
+	<br/><br/>
+    <input type="submit" value="Submit" class="btn btn-primary">
+</form:form>
+</div>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -28,25 +42,7 @@
 			var contextMapping = "${pageContext.request.contextPath}";
 		</script>
 	<!-- React Components -->
-		<script src="components/nav.js"></script> <!-- Navbar -->
-	</body>
+		<script src="../components/nav.js"></script> <!-- Navbar -->
+ 	</body>
 
 </html>
-
-<!--
-
-	<% String username = request.getParameter("username"); %>
-	<% out.println(username); %>
-
- -->
-
- <!-- Notes: ${pageContext.request.contextPath}/advisor/searchStudent
-
-* use Babel below to convert the next-gen JavaScript to browser-compatible JavaScript
-  https://babeljs.io/repl
-
-* You shouldn't use href="#" in Babel so use href="/".
-  BUT this causes the root index page to sometimes load, breaking links
-  Bottom line, fix all links
-
-  -->

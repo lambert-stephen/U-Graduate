@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import com.web_dev_494.uGraduate.entity.Professor;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,6 +26,7 @@ public class SectionDAOFunctionality implements SectionDAO {
 		 public void save(Section section) {
 
 	    	 Session currentSession = entityManager.unwrap(Session.class);
+
 	         currentSession.saveOrUpdate(section);
 		 }
 
@@ -48,6 +50,14 @@ public class SectionDAOFunctionality implements SectionDAO {
 	}
 
 	@Override
+	public List<Section> findAll() {
+		Session session = entityManager.unwrap(Session.class);
+		Query theQuery = session.createQuery("from Section", Section.class);
+
+		return theQuery.getResultList();
+	}
+
+	@Override
 	public List<Section> findByMajor(int name) {
 		Session session = entityManager.unwrap(Session.class);
 
@@ -55,6 +65,20 @@ public class SectionDAOFunctionality implements SectionDAO {
 		query.setParameter("name", name);
 
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Section> findByStudent(String username) {
+	    Session session = entityManager.unwrap(Session.class);
+
+		System.out.println("looking for " + username);
+
+		// TODO: Figure out this many to many query
+	    Query query = session.createQuery("SELECT s FROM Section s JOIN s.students a WHERE " +
+				"a.username=:susername");
+	    query.setParameter("susername", username);
+
+	    return query.getResultList();
 	}
 
 	@Override

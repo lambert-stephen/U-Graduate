@@ -38,6 +38,11 @@ public class SectionServiceFunctionality implements SectionService {
 	}
 
 	@Override
+	public List<Section> findAll() {
+		return sectionDAO.findAll();
+	}
+
+	@Override
 	public void deleteByName(String name) {
 		sectionDAO.deleteByName(name);
 	}
@@ -45,5 +50,10 @@ public class SectionServiceFunctionality implements SectionService {
 	@Override
 	public List<Section> findByMajor(int name) {
 		return sectionDAO.findByMajor(name);
+	}
+
+	@Override
+	public List<Section> findByStudent(String username) {
+		return sectionDAO.findByStudent(username);
 	}
 }

@@ -14,6 +14,7 @@ import com.web_dev_494.uGraduate.entity.Student;
 import com.web_dev_494.uGraduate.service.MajorService;
 import com.web_dev_494.uGraduate.service.SectionService;
 import com.web_dev_494.uGraduate.service.StudentService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -26,7 +27,6 @@ public class StudentController {
 	private MajorService majorService;
 	private SectionService sectionService;
 	private Student student;
-
 
 	@Autowired
 	public StudentController(StudentService studentService, MajorService m, SectionService s){
@@ -44,16 +44,9 @@ public class StudentController {
 	//register 
 	  
 	@RequestMapping("/home")
-	public String home(HttpServletRequest http){
+	public String home(){
 
 		return "student_mappings/studentHome";
-	}
-
-	@RequestMapping("/register")
-	public String registerStudent(Model model, @ModelAttribute("student") Student student){
-		  model.addAttribute(student);
-
-		  return "register-student-page";
 	}
 
 	private int convertMajor(String name){
@@ -82,24 +75,55 @@ public class StudentController {
 		model.addAttribute("sections", sections);
 		return "student_mappings/course-list";
 	}
-	
-	
-	//TODO: this currently shows courses needed-- how to show completed courses?? 
-	@RequestMapping("/coursesCompleted")
-	public String showCoursesCompleted(Model model, @AuthenticationPrincipal User user){
+
+	@RequestMapping("/register")
+	public String register (Model model, @AuthenticationPrincipal User user){
 
 		student = studentService.findByUsername(user.getUsername());
-		model.addAttribute("student", student);
+		model.addAttribute(student);
 
 		List<Section> sections = sectionService.findByMajor(convertMajor(student.getMajor()));
 		model.addAttribute("sections", sections);
-		return "student_mappings/courses-completed";
+
+		return "student_mappings/register";
 	}
 
-	@RequestMapping("/addSection")
-	public String addSection(Model model, @AuthenticationPrincipal User user){
+	@RequestMapping("/registered")
+	public String registered(@RequestParam("section") Section section, @AuthenticationPrincipal User user,
+							 Model model) {
 		student = studentService.findByUsername(user.getUsername());
-		model.addAttribute(student);
-		return "";
+		section = sectionService.findByName(section.getClassName()).get(0);
+
+		section.addStudent(student);
+
+		studentService.save(student);
+
+		model.addAttribute("student", student);
+		model.addAttribute("section", section);
+
+		return "student_mappings/registered";
 	}
+
+	@RequestMapping("/viewRegistered")
+	public String viewRegistered(Model model, @AuthenticationPrincipal User user){
+		student = studentService.findByUsername(user.getUsername());
+		List<Section> sections = sectionService.findByStudent(student.getUsername());
+		model.addAttribute("sections", sections);
+
+		/*
+		 TODO: This is a temporary hack. This makes extra unnecessary queries. Figure out many to many query
+		 !!! Time complexity is unnecessarily O(n^2)
+		*/
+
+
+
+		return "student_mappings/view-registered";
+	}
+
+	@RequestMapping("/changePassword")
+	public String changePassword(){
+
+		return "student_mappings/change-password";
+	}
+
 }
