@@ -11,6 +11,9 @@
     <title>Title</title>
 </head>
 <body>
-${section}
+  You added ${section.className}...
+<br>
+  The selected major was
+<br>
 </body>
 </html>

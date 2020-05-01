@@ -1,16 +1,19 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Fabian
-  Date: 4/7/2020
-  Time: 9:32 AM
+  Date: 3/11/2020
+  Time: 5:09 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>You added</title>
+    <title>Search Results | ID</title>
 </head>
 <body>
-     <p>Name</p>  ${professor.name}
+
+  You searched name ${section}
 </body>
 </html>

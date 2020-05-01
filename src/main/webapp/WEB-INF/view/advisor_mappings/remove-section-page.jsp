@@ -1,6 +1,5 @@
-
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%--
   Created by IntelliJ IDEA.
   User: Fabian
@@ -11,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 	<head>
-    	<title>Add Professor</title>
+    	<title>Remove Section</title>
     	<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 		<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 		<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -25,14 +24,21 @@
 
 		<div class="container">
 		  <br />
-  <h2 class="text-center">Add Professor</h2>
+  <h2 class="text-center">Remove Section</h2>
+		<form:form action= "${pageContext.request.contextPath}/advisor/removedSection" modelAttribute= "section" method="post">
 
-  <form:form action= "${pageContext.request.contextPath}/advisor/addedProfessor" modelAttribute= "professor" method="post">
+      Select a Section:&nbsp;
+      <select name="sectionSelection">
+          <c:forEach items="${section}" var="section">
+              <option value="${section.CRN}">${section.className}
 
-    <p>Enter the Professor's Full Name</p> <form:input path="name" class="form-control"/>
+              </option>
+          </c:forEach>
+      </select>
 
-	<br/><br/>
+      <br/><br/>
     <input type="submit" value="Submit" class="btn btn-primary">
+
 </form:form>
 </div>
 
