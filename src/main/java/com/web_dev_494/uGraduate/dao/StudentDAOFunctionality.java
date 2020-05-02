@@ -3,10 +3,13 @@ package com.web_dev_494.uGraduate.dao;
 import com.web_dev_494.uGraduate.entity.Authorities;
 import com.web_dev_494.uGraduate.entity.Student;
 import com.web_dev_494.uGraduate.entity.User;
+import com.web_dev_494.uGraduate.repo.UserDetailsServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +20,10 @@ import java.util.List;
 
 @Repository
 public class StudentDAOFunctionality implements StudentDAO {
+
+    // this is needed for bcrypt hashing
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     private EntityManager entityManager;
 
     @Autowired
@@ -52,7 +59,7 @@ public class StudentDAOFunctionality implements StudentDAO {
         Session currentSession = entityManager.unwrap(Session.class);
         if(student.getId() == 0){
             currentSession.saveOrUpdate(new User(0,
-                    student.getUsername(), "password"));
+                    student.getUsername(), encoder.encode("password")));
 
             Query query = currentSession.createQuery("from User s where s.username =:username" );
             query.setParameter("username", student.getUsername());
