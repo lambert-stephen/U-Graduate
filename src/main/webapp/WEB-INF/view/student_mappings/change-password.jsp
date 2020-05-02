@@ -51,13 +51,14 @@
   <p>Try to refrain from using your birthday or any significant dates</p>
 
 
-<form:form action= "${pageContext.request.contextPath}/student/changedPassword" method="post">
+<form:form action= "${pageContext.request.contextPath}/student/changePassword" method="post">
 
     <label>
         Enter your current password: <input type="text" name="currentPass"> <br><br>
 
         Enter your new password: <input type="text" name="newPassword"> <br>
-
+	<br/>
+	<input type="submit" value="Submit" class="btn btn-primary">
     </label>
             <%--
     <form:form action="${pageContext.request.contextPath}/advisor/studentByName" method="get">
