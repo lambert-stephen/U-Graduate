@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Student</title>
+    <title>${student.firstName}'s Student Account</title>
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <!-- Bootstrap -->
@@ -37,8 +37,13 @@
 			var contextMapping = "${pageContext.request.contextPath}";
 		</script>
 <br>
-<a href="${pageContext.request.contextPath}/student/courselist"> See All courses in your major </a> <br>
-<a href="${pageContext.request.contextPath}/student/viewRegistered"> See all your registered courses </a> <br>
+<a href="${pageContext.request.contextPath}/student/courselist"> See All Courses For Your Major </a> <br>
+<a href="${pageContext.request.contextPath}/student/viewRegistered"> See All Registered Courses </a> <br>
 <a href="${pageContext.request.contextPath}/student/register"> Register for Course </a> <br>
+<a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br>
+<a href="#"> Logout </a> <br>
+
+</div>
+</nav>
 </body>
 </html>

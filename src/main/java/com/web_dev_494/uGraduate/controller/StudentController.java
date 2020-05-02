@@ -22,7 +22,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
-	
+
 	private StudentService studentService;
 	private MajorService majorService;
 	private SectionService sectionService;
@@ -41,8 +41,8 @@ public class StudentController {
 	//see what classes they are enrolled in
 	//see what classes they finished
 	//see what classes they have left
-	//register 
-	  
+	//register
+
 	@RequestMapping("/home")
 	public String home(){
 
@@ -64,7 +64,7 @@ public class StudentController {
 		}
 		return -1;
 	}
-	    
+
 	@RequestMapping("/courselist")
 	public String showCourses(Model model, @AuthenticationPrincipal User user){
 
@@ -108,6 +108,7 @@ public class StudentController {
 	public String viewRegistered(Model model, @AuthenticationPrincipal User user){
 		student = studentService.findByUsername(user.getUsername());
 		List<Section> sections = sectionService.findByStudent(student.getUsername());
+		model.addAttribute("student", student);
 		model.addAttribute("sections", sections);
 
 		/*
@@ -121,8 +122,9 @@ public class StudentController {
 	}
 
 	@RequestMapping("/changePassword")
-	public String changePassword(){
-
+	public String changePassword(Model model, @AuthenticationPrincipal User user){
+		student = studentService.findByUsername(user.getUsername());
+		model.addAttribute("student", student);
 		return "student_mappings/change-password";
 	}
 
