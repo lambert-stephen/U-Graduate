@@ -134,11 +134,21 @@ to start doing from now on...
 ## Deliverables for final project
 
 Functionality
-- Students should be able to search for a specific class
-- Students should be able to register for a course. 
+- Students should be able to search for a specific class *Done
+- Students should be able to register for a course. * Done
 
-The only deliverables that were not achieved were the unregister functions and the "show completed/ in progress"
-React was added to the mix and now displays a much better user experience. The deployment 
+The only deliverables that were not achieved were the unregister functions, "show completed/ in progress", and most 
+delete functionality (this was left out as it wasn't important to the core functionality of the app. We showed 
+our CRUD competency through the other CRUD operations)
+React was added to the mix and now displays a much better user experience. 
+Secrets are saved and rotated on AWS's Secrets Manager and the given key is located in the application.properties file
+
+With react, the application looks a lot more like a registration app. An admin can add a student. They can then 
+add a professor and a class. Once the student is added, the student can login with the given credentials and see 
+a different module. From their module, they can see all the courses in their major. And all their registered classes
+(which at this point there are no registered courses). They can register for a class and the registered list will 
+then be updated. The student can now change their password and the application will store their password into the database
+using bcrypt. the application encodes and decodes bcrypt that is stored on the database.  
 
 ## Specialization deliverables
 
