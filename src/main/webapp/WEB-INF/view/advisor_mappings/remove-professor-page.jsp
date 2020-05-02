@@ -24,7 +24,7 @@
 
 		<div class="container">
 		  <br />
-  <h2 class="text-center">Remove Section</h2>
+  <h2 class="text-center">Remove Professor</h2>
 		<form:form action= "${pageContext.request.contextPath}/advisor/removedProfessor" modelAttribute= "professor" method="post">
 
       Select a Professor:&nbsp;
