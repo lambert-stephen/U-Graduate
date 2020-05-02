@@ -29,7 +29,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Admin | Attach Professor</title>
 </head>
 <body>
 
