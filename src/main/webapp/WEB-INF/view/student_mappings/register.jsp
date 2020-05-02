@@ -53,7 +53,7 @@
   <h2>Course Registration</h2>
   <p>Please select a class to register from the drop down below</p>
   <br/>
-  
+
 
   <form:form action= "${pageContext.request.contextPath}/student/registered" method="post">
 <div class="form-row">
@@ -69,7 +69,7 @@
 </div>
 </div>
 </form:form>
-  
+
  </div>
 
 </body>

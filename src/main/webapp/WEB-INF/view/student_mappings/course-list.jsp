@@ -54,7 +54,7 @@
 
 <div class="container">
   <h2>Courses Needed</h2>
-  <p>Listed below are all the courses that you need:</p>            
+  <p>Listed below are all the courses that you need:</p>
   <table class="table">
     <thead>
       <tr>

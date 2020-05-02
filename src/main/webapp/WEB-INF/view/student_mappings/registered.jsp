@@ -47,7 +47,7 @@
 
 <div class="container">
   <h2>Success</h2>
-  <p>${student.firstName} is now registered for ${section.className}</p>  
+  <p>${student.firstName} is now registered for ${section.className}</p>
 </div>
 
 

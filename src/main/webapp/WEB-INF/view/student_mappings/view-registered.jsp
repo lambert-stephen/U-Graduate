@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>${student.firstName}'s Registered Classes</title>
-    
+
     <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
     <!-- Bootstrap -->
@@ -49,7 +49,7 @@
 
 <div class="container">
   <h2>Registered Courses</h2>
-  <p>Listed below are all the courses that you have registered for:</p>            
+  <p>Listed below are all the courses that you have registered for:</p>
   <table class="table">
     <thead>
       <tr>

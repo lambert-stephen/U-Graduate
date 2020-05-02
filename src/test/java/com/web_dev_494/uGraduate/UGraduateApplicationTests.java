@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -49,6 +50,7 @@ class UGraduateApplicationTests {
     private WebApplicationContext context;
     @Mock
     HttpServletRequest http;
+
     //checks if student dao is not null
     @Test
     void contextLoads() throws Exception {
@@ -127,44 +129,65 @@ class UGraduateApplicationTests {
         Assertions.assertNotNull(student1.getUsername());
         Assertions.assertNotNull(student1.getLastName());
         Assertions.assertNotNull(student1.getFirstName());
+        Assertions.assertEquals(student1.getFirstName(),"Stephen");
+        Assertions.assertEquals(student1.getLastName(),"Lambert");
+        Assertions.assertEquals(student1.getMajor(),"CS");
+        Assertions.assertEquals(student1.getUsername(),"s1");
         Assertions.assertNotNull(student1.getMajor());
         Assertions.assertNotNull(student1.getId());
     }
     @Test
     //function to test the user database
     public void createUserTest(){
+        //create a user
         User user1 = new User(10,"adminadmin","12345qwert");
         user1.setId(10);
         user1.setUsername("adminadmin");
-        user1.setPassword("1245qwert");
+        user1.setPassword("12345qwert");
+        //check for correct output
         Assertions.assertNotNull(user1.getId());
         Assertions.assertNotNull(user1.getUsername());
         Assertions.assertNotNull(user1.getPassword());
+        Assertions.assertEquals(user1.getUsername(),"adminadmin");
+        Assertions.assertEquals(user1.getId(),10);
+        Assertions.assertEquals(user1.getPassword(),"12345qwert");
     }
     @Test
     //test the sections entity in the database
     public void sectionTest(){
-        // Commented out because constructors changed
-        /*
-        Section section1 = new Section("CS 341",24579);
+        //create a section
+        Section section1 = new Section("CS 341");
+        //add atrributes
         section1.setClassName("CS 341");
         section1.setCRN(24579);
+        //create a student
+        Student student1 = new Student(13690,"John","Long","CS","johnl1");
+        //adds student
+        section1.addStudent(student1);
+        //checks for correct output
         Assertions.assertNotNull(section1.getClassName());
+        Assertions.assertEquals(student1.getFirstName(),"John");
+        Assertions.assertEquals(student1.getLastName(),"Long");
+        Assertions.assertEquals(student1.getMajor(),"CS");
+        Assertions.assertEquals(student1.getUsername(),"johnl1");
         Assertions.assertNotNull(section1.getCRN());
         Assertions.assertNotNull(section1);
-        */
+        Assertions.assertEquals(section1.getClassName(),"CS 341");
+        Assertions.assertEquals(section1.getCRN(),24579);
     }
     @Test
     //test the professor entity in the database
     public void professorTest(){
-        // Commented out because constructors changed
-        /*
-        Professor professor1 = new Professor(67492,"Johnson");
-        professor1.setProfessorId(67492);
+        Professor professor1 = new Professor("Johnson");
+        professor1.setProfessorId(55555);
         professor1.setName("Johnson");
-        Assertions.assertNotNull(professor1.getProfessorId());
-        Assertions.assertNotNull(professor1.getName());
-        */
+        professor1.getProfessorId();
+        professor1.getName();
+        //check that the right name is returned
+        Assertions.assertEquals(professor1.getName(),"Johnson");
+        Assertions.assertEquals(professor1.getProfessorId(),55555);
+        //check that the professor object isnt null
+        Assertions.assertNotNull(professor1);
     }
     @Test
     //test the prerequisites entity in the database
@@ -182,6 +205,8 @@ class UGraduateApplicationTests {
         //checks that it is not empty
         Assertions.assertNotNull(major1.getMajorId());
         Assertions.assertNotNull(major1.getName());
+        Assertions.assertEquals(major1.getMajorId(),441);
+        Assertions.assertEquals(major1.getName(),"CS");
     }
     @Test
     //test the authorities in the database
@@ -192,42 +217,27 @@ class UGraduateApplicationTests {
         authorities1.setAuthority("adminadmin");
         Assertions.assertNotNull(authorities1.getId());
         Assertions.assertNotNull(authorities1.getAuthority());
+        Assertions.assertEquals(authorities1.getId(),1131850);
+        Assertions.assertEquals(authorities1.getAuthority(),"adminadmin");
     }
-    //CHECKPOINT 4 TEST
-    //test the advisor controller for authtication
-    //test for correct mapping
-    /*@Test
-    public testAuthAdvisor(){
-
-    }
-     */
-    //test the default controller for authentication
-    //test for correct mapping
-    /*@Test
-    public testAuthDefault(){
-
-    }
-     */
-    //test the advisor controller for authentication
-    //test for correct mapping
-    /*@Test
-    public testAuthLoggout(){
-
-    }
-     */
-    //test the advisor controller for authentication
-    //test for correct mapping
-    /*@Test
-    public testAuthStudent(){
-
-    }
-     */
-    // the authentication of all users
-    /*
+    //test for authenticated users for the login mapping
     @Test
-    public testUserSecurity(){
-        //check for correct authentication
-        //check for correct mapping to jsp pages
+    public void loginWithCorrectCredentials() throws Exception {
+        mockMvc.perform(get("/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .param("admin", "admin")
+                .param("password", "password"))
+                .andExpect(status().is2xxSuccessful());
     }
-     */
+    //test that an unauthenticated user is no authorized
+    @Test
+    public void testWithNoAdvisor() throws Exception {
+        mockMvc.perform(get("/advisor"))
+                .andExpect(status().isUnauthorized());
+    }
+    @Test
+    public void testWithNoStudent() throws Exception {
+        mockMvc.perform(get("/advisor"))
+                .andExpect(status().isUnauthorized());
+    }
 }
