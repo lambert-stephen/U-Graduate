@@ -358,7 +358,7 @@ var Navigation =
                     "a",
                     {
                       className: "nav-link",
-                      href: "#"
+                      href: contextMapping + "/logout"
                     },
                     "Logout"
                   )
