@@ -41,8 +41,8 @@
 <a href="${pageContext.request.contextPath}/student/courselist"> See All Courses For Your Major </a> <br>
 <a href="${pageContext.request.contextPath}/student/viewRegistered"> See All Registered Courses </a> <br>
 <a href="${pageContext.request.contextPath}/student/register"> Register for Course </a> <br>
-<a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br>
-<a href="${pageContext.request.contextPath}/logout"> Logout </a> <br>
+<a href="${pageContext.request.contextPath}/student/changePassword"> Change Password </a> <br><a href="#"> Logout </a> <br>
+
 </div>
 </nav>
 
@@ -51,14 +51,13 @@
   <p>Try to refrain from using your birthday or any significant dates</p>
 
 
-<form:form action= "${pageContext.request.contextPath}/student/changePassword" method="post">
+<form:form action= "${pageContext.request.contextPath}/student/changedPassword" method="post">
 
     <label>
         Enter your current password: <input type="text" name="currentPass"> <br><br>
 
         Enter your new password: <input type="text" name="newPassword"> <br>
-	<br/>
-	<input type="submit" value="Submit" class="btn btn-primary">
+
     </label>
             <%--
     <form:form action="${pageContext.request.contextPath}/advisor/studentByName" method="get">

@@ -150,9 +150,6 @@ a different module. From their module, they can see all the courses in their maj
 then be updated. The student can now change their password and the application will store their password into the database
 using bcrypt. the application encodes and decodes bcrypt that is stored on the database.  
 
-The only deliverables that were not achieved were the unregister functions and the "show completed/ in progress"
-React was added to the mix and now displays a much better user experience. The deployment 
-
 ## Specialization deliverables
 
 Fabian - Secure management of the registration system. IAM customization for Admin roles only. String access control. 2F auth for admins. Extensive logging. Credential-less storing, and other related security vulnerabilities within the scope of the registration system

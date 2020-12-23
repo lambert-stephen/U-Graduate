@@ -288,15 +288,7 @@ var Navigation =
                         href: contextMapping + "/advisor/removeProfessor"
                       },
                       "Remove Professor"
-                    ),
-                    React.createElement(
-                            "a",
-                            {
-                              className: "dropdown-item",
-                              href: contextMapping + "/advisor/attachProfessor"
-                            },
-                            "Attach Professor"
-                          )
+                    )
                   )
                 ),
                 React.createElement(
@@ -366,7 +358,7 @@ var Navigation =
                     "a",
                     {
                       className: "nav-link",
-                      href: contextMapping + "/logout"
+                      href: "#"
                     },
                     "Logout"
                   )

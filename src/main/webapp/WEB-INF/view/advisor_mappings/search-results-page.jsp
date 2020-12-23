@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <html>
 <head>
     <title>Search Results | Name</title>
@@ -21,33 +19,12 @@
 <body>
 <div id="nav"></div>
 
-		<br/>	
-<div class="container">
-  <h2 class="text-center">Results</h2>
-  <br/>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Major</th>
-        <th>ID</th>
-      </tr>
-    </thead>
-    <tbody>
+		<div class="container">
+		  <br />
+		  <h2 class="text-center">Results</h2>
 
-<c:forEach items="${students}" var="obj">
-    <tr>
-    	<td>${obj.firstName}</td>
-    	<td>${obj.lastName}</td>
-    	<td>${obj.major}</td>
-    	<td>${obj.id}</td>
-	</tr>
-</c:forEach>
-    </tbody>
-  </table>
-</div>
-
+			${students}
+		</div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

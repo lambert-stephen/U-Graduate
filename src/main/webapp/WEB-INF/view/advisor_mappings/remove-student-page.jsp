@@ -27,7 +27,7 @@
 
 		<form:form action= "${pageContext.request.contextPath}/advisor/removedStudent" modelAttribute= "student" method="post">
 
-    <p>Enter Student's ID</p><br/><form:input path="id" class="form-control"/>
+    <p>Enter Student's Id/p> <form:input path="id" class="form-control"/>
 	<br/><br/>
     <input type="submit" value="Submit" class="btn btn-primary">
 </form:form>
